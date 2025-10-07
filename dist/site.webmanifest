@@ -1,0 +1,19 @@
+{
+  "name": "Nova Studio",
+  "short_name": "Nova Studio",
+  "description": "Tim od dva brata iz Novog Sada - Kreiranje digitalnih rešenja",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00D4FF",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/nova-studio-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["development", "business", "productivity"],
+  "lang": "sr"
+}

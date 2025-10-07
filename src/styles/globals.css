@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS variables */
+:root {
+  --electric-blue: #00D4FF;
+  --cyber-purple: #8B5CF6;
+  --neon-green: #00FF88;
+  --dark-slate: #0F172A;
+  --midnight: #020617;
+  --silver: #E2E8F0;
+  --gold: #F59E0B;
+  --glass: rgba(255, 255, 255, 0.1);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-slate);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--electric-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-purple);
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .glass-morphism {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-electric-blue to-cyber-purple bg-clip-text text-transparent;
+  }
+
+  .cyber-border {
+    @apply border-2 border-transparent;
+    background: linear-gradient(var(--midnight), var(--midnight)) padding-box,
+                linear-gradient(to right, var(--electric-blue), var(--cyber-purple)) border-box;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple), var(--neon-green));
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg;
+    @apply bg-gradient-to-r from-electric-blue to-cyber-purple;
+    @apply text-white shadow-lg hover:shadow-xl;
+    @apply transform transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-[0_0_30px_rgba(0,212,255,0.5)];
+    @apply active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg;
+    @apply bg-transparent border-2 border-electric-blue text-electric-blue;
+    @apply hover:bg-electric-blue hover:text-midnight;
+    @apply transform transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium;
+    @apply text-silver hover:text-electric-blue;
+    @apply transition-colors duration-200;
+  }
+
+  .card-3d {
+    @apply p-6 rounded-xl glass-morphism;
+    @apply transform transition-all duration-500 ease-out;
+    @apply hover:scale-105 hover:rotate-2;
+    @apply cursor-pointer group;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    @apply focus:outline-none focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20;
+    @apply transition-all duration-200;
+  }
+  
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold font-space;
+    @apply gradient-text mb-6;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-silver/80 max-w-3xl mx-auto mb-12;
+  }
+}
+
+/* Animation improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Loading states */
+.loading-skeleton {
+  @apply animate-pulse bg-gradient-to-r from-white/10 to-white/5 rounded;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-electric-blue ring-offset-2 ring-offset-midnight;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Allow pointer events to pass through overlays to reach Canvas */
+.grid-overlay {
+  pointer-events: none;
+}
+
+/* Allow Canvas interaction while keeping content interactive */
+.hero-content {
+  pointer-events: none; /* Allow click-through on empty space */
+}
+
+.hero-content * {
+  pointer-events: auto; /* But keep text/buttons interactive */
+}

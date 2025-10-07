@@ -1,0 +1,324 @@
+/* Light Theme Variables */
+:root.light {
+  /* Backgrounds - High contrast white/light backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #e5e7eb;
+  --bg-tertiary: #d1d5db;
+  --bg-glass: rgba(255, 255, 255, 0.98);
+  --bg-card: rgba(255, 255, 255, 1);
+  
+  /* Text Colors - Very dark for maximum contrast */
+  --text-primary: #000000;
+  --text-secondary: #111827;
+  --text-tertiary: #1f2937;
+  --text-muted: #374151;
+  
+  /* Border Colors - Darker for visibility */
+  --border-primary: rgba(0, 0, 0, 0.25);
+  --border-secondary: rgba(0, 0, 0, 0.15);
+  
+  /* Accent Colors - Darker versions for light background */
+  --electric-blue: #0369a1;
+  --cyber-purple: #6d28d9;
+  --neon-green: #047857;
+  --gold: #b45309;
+  --silver: #374151;
+  
+  /* Planet and 3D Elements */
+  --planet-bg: #f1f5f9;
+  --planet-glow: rgba(0, 212, 255, 0.1);
+  --node-color: #00D4FF;
+  --connection-color: rgba(0, 212, 255, 0.4);
+}
+
+/* Dark Theme Variables (default) */
+:root,
+:root.dark {
+  /* Backgrounds - Very dark for contrast */
+  --bg-primary: #000000;
+  --bg-secondary: #0f0f0f;
+  --bg-tertiary: #1a1a1a;
+  --bg-glass: rgba(5, 5, 5, 0.9);
+  --bg-card: rgba(10, 10, 10, 0.95);
+  
+  /* Text Colors - Pure white for maximum contrast */
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --text-tertiary: #f3f4f6;
+  --text-muted: #e5e7eb;
+  
+  /* Border Colors - More visible */
+  --border-primary: rgba(255, 255, 255, 0.2);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  
+  /* Accent Colors - Bright for dark background */
+  --electric-blue: #00D4FF;
+  --cyber-purple: #a78bfa;
+  --neon-green: #00FF88;
+  --gold: #fbbf24;
+  --silver: #e5e7eb;
+  
+  /* Planet and 3D Elements */
+  --planet-bg: #0a0a1a;
+  --planet-glow: rgba(0, 212, 255, 0.03);
+  --node-color: #00D4FF;
+  --connection-color: rgba(0, 212, 255, 0.2);
+}
+
+/* Apply theme variables to body and common elements */
+body {
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme gets white background */
+:root.light body {
+  background-color: var(--bg-primary);
+}
+
+/* Dark theme gets transparent background to show planet */
+:root.dark body,
+:root body {
+  background-color: transparent;
+}
+
+/* Make sections transparent in both themes to show planet */
+section {
+  background-color: transparent !important;
+}
+
+/* Override common text classes with theme variables */
+.text-white {
+  color: var(--text-primary) !important;
+}
+
+.text-silver {
+  color: var(--text-secondary) !important;
+}
+
+.text-silver\/60 {
+  color: var(--text-secondary) !important;
+}
+
+.text-silver\/70 {
+  color: var(--text-secondary) !important;
+}
+
+.text-silver\/80 {
+  color: var(--text-tertiary) !important;
+}
+
+.text-silver\/50 {
+  color: var(--text-muted) !important;
+}
+
+/* Gradient text should remain visible in both themes */
+.gradient-text {
+  background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple), var(--neon-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Border overrides */
+.border-white\/10,
+.border-white\/20 {
+  border-color: var(--border-primary) !important;
+}
+
+/* Glass morphism effect */
+.glass-morphism {
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-primary);
+}
+
+/* Section backgrounds */
+.section-bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.section-bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.section-bg-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+/* Text utilities with theme support */
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+.text-theme-tertiary {
+  color: var(--text-tertiary);
+}
+
+.text-theme-muted {
+  color: var(--text-muted);
+}
+
+/* Border utilities */
+.border-theme-primary {
+  border-color: var(--border-primary);
+}
+
+.border-theme-secondary {
+  border-color: var(--border-secondary);
+}
+
+/* Light theme specific overrides for hero section */
+:root.light .hero-background {
+  background: radial-gradient(circle at center, #ffffff 0%, #f3f4f6 100%) !important;
+}
+
+:root.dark .hero-background {
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%) !important;
+}
+
+/* Grid overlay for light theme */
+:root.light .grid-overlay {
+  background-image: 
+    linear-gradient(rgba(3, 105, 161, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(3, 105, 161, 0.15) 1px, transparent 1px);
+}
+
+:root.dark .grid-overlay {
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.15) 1px, transparent 1px);
+}
+
+/* Remove text shadows and fix gradient text in light theme */
+:root.light * {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+:root.light .text-electric-blue {
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Force remove all shadows from header navigation in light theme */
+:root.light header,
+:root.light header *,
+:root.light nav,
+:root.light nav * {
+  text-shadow: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Fix gradient text for light theme */
+:root.light .gradient-text {
+  background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple), var(--neon-green)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+:root.light .bg-gradient-to-r.bg-clip-text.text-transparent {
+  background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple), var(--neon-green)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* Remove black gradient backgrounds from sections in both themes */
+:root.light .bg-gradient-to-b,
+:root.dark .bg-gradient-to-b {
+  background: transparent !important;
+}
+
+:root.light section .bg-gradient-to-b,
+:root.light section .bg-gradient-to-t,
+:root.dark section .bg-gradient-to-b,
+:root.dark section .bg-gradient-to-t {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Header adjustments for light theme */
+:root.light header {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Header adjustments for dark theme */
+:root.dark header,
+:root header {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+:root.light header .container-wide {
+  background-color: transparent !important;
+}
+
+/* Mobile menu in light theme */
+:root.light header .lg\\:hidden {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Navigation text in light theme */
+:root.light nav span,
+:root.light nav button span,
+:root.light header span {
+  color: var(--text-primary) !important;
+  text-shadow: none !important;
+}
+
+:root.light nav .text-electric-blue,
+:root.light header .text-electric-blue {
+  color: var(--electric-blue) !important;
+  text-shadow: none !important;
+}
+
+:root.light .text-theme-secondary,
+:root.light header .text-theme-secondary {
+  color: var(--text-secondary) !important;
+  text-shadow: none !important;
+}
+
+/* Header logo and navigation hover states */
+:root.light header button,
+:root.light header .cursor-pointer {
+  color: var(--text-primary) !important;
+}
+
+/* Navigation links specific overrides for light theme */
+:root.light nav button .text-theme-secondary,
+:root.light nav .text-theme-secondary,
+:root.light header .text-theme-secondary {
+  color: var(--text-secondary) !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+:root.light nav button span,
+:root.light header nav button span,
+:root.light header nav span {
+  color: var(--text-secondary) !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+:root.light nav button .text-electric-blue,
+:root.light header nav .text-electric-blue {
+  color: var(--electric-blue) !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
