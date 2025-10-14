@@ -427,7 +427,7 @@ export const nl = {
     location: {
       label: "Locatie",
       value: "Novi Sad, Servië",
-      description: "Knez Mihailova 42"
+      description: "In aanbouw"
     },
     hours: {
       label: "Openingstijden",
@@ -439,7 +439,7 @@ export const nl = {
     navigation: {
       title: "Navigatie"
     },
-    copyright: "© {year} Nova Studio. Alle rechten voorbehouden."
+    copyright: "© {year} Nova Studio Solutions. Alle rechten voorbehouden."
   },
   common: {
     loading: "Laden...",

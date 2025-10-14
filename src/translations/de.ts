@@ -438,7 +438,7 @@ export const de = {
     location: {
       label: "Standort",
       value: "Novi Sad, Serbien",
-      description: "Knez Mihailova 42"
+      description: "Im Aufbau"
     },
     hours: {
       label: "Arbeitszeiten",

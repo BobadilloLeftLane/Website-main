@@ -61,6 +61,10 @@ const contactValidation = [
         .trim()
         .isLength({ min: 10, max: 2000 })
         .withMessage('Message must be between 10 and 2000 characters'),
+    (0, express_validator_1.body)('language')
+        .optional()
+        .isIn(['en', 'sr', 'de', 'fr', 'es', 'it', 'tr', 'nl', 'el', 'et', 'sv', 'no', 'pt'])
+        .withMessage('Please provide a valid language code'),
 ];
 router.post('/', contactLimiter, contactValidation, async (req, res) => {
     try {
@@ -71,7 +75,7 @@ router.post('/', contactLimiter, contactValidation, async (req, res) => {
                 details: errors.array()
             });
         }
-        const { name, email, company, phone, projectType, budget, timeline, message } = req.body;
+        const { name, email, company, phone, projectType, budget, timeline, message, language } = req.body;
         logger_1.logger.info('New contact form submission', {
             projectType,
             budget,
@@ -91,14 +95,15 @@ router.post('/', contactLimiter, contactValidation, async (req, res) => {
             timeline,
             message,
             submittedAt: new Date().toISOString(),
-            ip: req.ip
+            ip: req.ip || undefined
         });
         await (0, emailService_1.sendAutoReply)({
             name,
             email,
-            projectType
+            projectType,
+            language: language || 'en'
         });
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             message: 'Your message has been sent successfully. We will contact you within 24 hours.',
             timestamp: new Date().toISOString()
@@ -110,7 +115,7 @@ router.post('/', contactLimiter, contactValidation, async (req, res) => {
             stack: error instanceof Error ? error.stack : undefined,
             ip: req.ip
         });
-        res.status(500).json({
+        return res.status(500).json({
             error: 'Failed to send message. Please try again later or contact us directly.',
             timestamp: new Date().toISOString()
         });

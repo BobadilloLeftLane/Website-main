@@ -59,7 +59,7 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>
 
 const ContactForm = () => {
-  const { t } = useTranslation()
+  const { t, currentLanguage } = useTranslation()
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -82,7 +82,10 @@ const ContactForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          language: currentLanguage
+        }),
       })
 
       if (!response.ok) {

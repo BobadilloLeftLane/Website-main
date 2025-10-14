@@ -427,7 +427,7 @@ export const tr = {
     location: {
       label: "Konum",
       value: "Novi Sad, Sırbistan",
-      description: "Knez Mihailova 42"
+      description: "Yapım aşamasında"
     },
     hours: {
       label: "Çalışma saatleri",
@@ -439,7 +439,7 @@ export const tr = {
     navigation: {
       title: "Navigasyon"
     },
-    copyright: "© {year} Nova Studio. Tüm haklar saklıdır."
+    copyright: "© {year} Nova Studio Solutions. Tüm haklar saklıdır."
   },
   common: {
     loading: "Yükleniyor...",

@@ -11,6 +11,7 @@ import {
   CheckCircle,
   Settings,
   ArrowRight,
+  ArrowDown,
   Target,
   Zap
 } from 'lucide-react'
@@ -158,7 +159,7 @@ const ProcessSection = () => {
                     <ul className="space-y-2">
                       {step.deliverables.map((deliverable, i) => (
                         <li key={i} className="flex items-start text-sm text-silver/60">
-                          <ArrowRight className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" style={{ color: step.color }} />
+                          <ArrowDown className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" style={{ color: step.color }} />
                           {deliverable}
                         </li>
                       ))}
@@ -222,20 +223,6 @@ const ProcessSection = () => {
                   </div>
                 </motion.div>
               </div>
-
-              {/* Connection Arrow */}
-              {index < processSteps.length - 1 && (
-                <motion.div
-                  className="absolute left-1/2 transform -translate-x-1/2 mt-12 lg:hidden"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <ArrowRight 
-                    className="w-6 h-6 text-electric-blue rotate-90" 
-                  />
-                </motion.div>
-              )}
             </motion.div>
           ))}
         </motion.div>

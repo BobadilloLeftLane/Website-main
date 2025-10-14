@@ -427,7 +427,7 @@ export const it = {
     location: {
       label: "Posizione",
       value: "Novi Sad, Serbia",
-      description: "Knez Mihailova 42"
+      description: "In costruzione"
     },
     hours: {
       label: "Orari di lavoro",
@@ -439,7 +439,7 @@ export const it = {
     navigation: {
       title: "Navigazione"
     },
-    copyright: "© {year} Nova Studio. Tutti i diritti riservati."
+    copyright: "© {year} Nova Studio Solutions. Tutti i diritti riservati."
   },
   common: {
     loading: "Caricamento...",

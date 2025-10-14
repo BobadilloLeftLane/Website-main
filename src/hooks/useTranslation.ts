@@ -1,13 +1,13 @@
 import { useState, useEffect, createContext, useContext } from 'react'
-// Import Serbian as default (no lazy loading for default language)
-import { sr } from '@/translations/sr'
+// Import English as default (no lazy loading for default language)
+import { en } from '@/translations/en'
 
 export type Language = 'sr' | 'en' | 'de' | 'fr' | 'es' | 'tr' | 'el' | 'nl' | 'et' | 'sv' | 'no' | 'it' | 'pt'
 
-// Dynamic imports for translations (except Serbian which is always loaded)
+// Dynamic imports for translations (except English which is always loaded)
 const translationLoaders: Record<Language, () => Promise<{ [key: string]: any }>> = {
-  sr: async () => ({ sr }), // Already loaded, return immediately
-  en: () => import('@/translations/en').then(m => m),
+  en: async () => ({ en }), // Already loaded, return immediately
+  sr: () => import('@/translations/sr').then(m => m),
   de: () => import('@/translations/de').then(m => m),
   fr: () => import('@/translations/fr').then(m => m),
   es: () => import('@/translations/es').then(m => m),
@@ -21,8 +21,8 @@ const translationLoaders: Record<Language, () => Promise<{ [key: string]: any }>
   pt: () => import('@/translations/pt').then(m => m)
 }
 
-export type TranslationKey = keyof typeof sr
-export type Translation = typeof sr
+export type TranslationKey = keyof typeof en
+export type Translation = typeof en
 
 interface TranslationContextType {
   currentLanguage: Language
@@ -42,9 +42,9 @@ export const useTranslation = () => {
 }
 
 export const useTranslationProvider = () => {
-  const [currentLanguage, setCurrentLanguage] = useState<Language>('sr')
-  const [translation, setTranslation] = useState<Translation>(sr) // Initialize with Serbian
-  const [isLoading, setIsLoading] = useState(false) // Start as false since we have Serbian
+  const [currentLanguage, setCurrentLanguage] = useState<Language>('en')
+  const [translation, setTranslation] = useState<Translation>(en) // Initialize with English
+  const [isLoading, setIsLoading] = useState(false) // Start as false since we have English
 
   // Load translation dynamically when language changes
   useEffect(() => {
@@ -57,9 +57,9 @@ export const useTranslationProvider = () => {
         setTranslation(translationData)
       } catch (error) {
         console.error(`Failed to load translation for ${currentLanguage}`, error)
-        // Fallback to Serbian
-        if (currentLanguage !== 'sr') {
-          const fallback = await translationLoaders.sr()
+        // Fallback to English
+        if (currentLanguage !== 'en') {
+          const fallback = await translationLoaders.en()
           setTranslation(Object.values(fallback)[0] as Translation)
         }
       } finally {
@@ -72,15 +72,15 @@ export const useTranslationProvider = () => {
 
   // Load saved language from localStorage on mount
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') as Language
-    if (savedLanguage && savedLanguage !== 'sr' && translationLoaders[savedLanguage]) {
+    const savedLanguage = localStorage.getItem('user-language') as Language
+    if (savedLanguage && translationLoaders[savedLanguage]) {
       setCurrentLanguage(savedLanguage)
     }
   }, [])
 
   const setLanguage = (lang: Language) => {
     setCurrentLanguage(lang)
-    localStorage.setItem('language', lang)
+    localStorage.setItem('user-language', lang)
   }
 
   return {

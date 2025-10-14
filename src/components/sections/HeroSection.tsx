@@ -143,21 +143,21 @@ const HeroSection = () => {
               }
             }}
           >
-            <motion.span 
+            <motion.span
               className="block text-theme-primary"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              NOVA
+              NOVA STUDIO
             </motion.span>
-            <motion.span 
+            <motion.span
               className="block bg-gradient-to-r from-electric-blue via-cyber-purple to-neon-green bg-clip-text text-transparent animate-gradient"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              STUDIO
+              SOLUTIONS
             </motion.span>
           </motion.h1>
 

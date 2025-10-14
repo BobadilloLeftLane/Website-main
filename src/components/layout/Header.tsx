@@ -101,16 +101,12 @@ const Header = () => {
       <div className="container-wide section-padding">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <button onClick={() => scrollToSection('home')} className="flex items-center space-x-3">
+          <button onClick={() => scrollToSection('home')} className="flex items-center">
             <motion.div
               variants={logoVariants}
               whileHover="hover"
-              className="flex items-center space-x-3"
             >
               <LogoIcon size={64} className="text-electric-blue" />
-              <span className="text-xl font-bold font-sans text-electric-blue cursor-pointer tracking-wide">
-                NOVA STUDIO
-              </span>
             </motion.div>
           </button>
 

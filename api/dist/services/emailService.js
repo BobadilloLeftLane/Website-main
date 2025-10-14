@@ -1,31 +1,79 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendAutoReply = exports.sendContactEmail = void 0;
-const nodemailer_1 = __importDefault(require("nodemailer"));
+const nodemailer = __importStar(require("nodemailer"));
 const logger_1 = require("../utils/logger");
+const emailTemplate = {
+    subject: 'Thank you for contacting - Nova Studio Solutions Team will get back to you soon!',
+    greeting: 'Dear',
+    thankYou: 'Thank you for contacting us regarding your project!',
+    received: 'Your message has been received',
+    responseTime: 'Our team will analyze your needs and contact you within 24 hours with a detailed proposal.',
+    whatFollowsTitle: 'What follows:',
+    whatFollows: {
+        analysis: 'Analysis: We thoroughly study your requirements',
+        strategy: 'Strategy: We create a customized approach',
+        consultation: 'Consultations: We schedule a call with the technical team',
+        proposal: 'Proposal: We deliver complete project documentation'
+    },
+    whyNovaTitle: 'Why Nova Studio Solutions?',
+    whyNova: {
+        fast: 'Fast & efficient - development in the shortest possible time',
+        affordable: 'Affordable prices - best quality-to-price ratio',
+        transparent: 'Full transparency - you know exactly what you get',
+        support: '24/7 support - we are here when you need us'
+    },
+    urgentContact: 'For urgent inquiries, you can contact us directly:',
+    footerCompany: 'Nova Studio Solutions',
+    footerLocation: 'Novi Sad, Serbia',
+    footerDisclaimer: 'This message was automatically generated. Please do not reply to this email.'
+};
 const createTransporter = () => {
-    if (process.env.NODE_ENV === 'production') {
-        return nodemailer_1.default.createTransporter({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-    }
-    else {
-        return nodemailer_1.default.createTransporter({
-            host: 'smtp.ethereal.email',
-            port: 587,
-            auth: {
-                user: 'ethereal.user@ethereal.email',
-                pass: 'ethereal.pass'
-            }
-        });
-    }
+    return nodemailer.createTransport({
+        host: 'mail.privateemail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
 };
 const sendContactEmail = async (data) => {
     const transporter = createTransporter();
@@ -49,7 +97,7 @@ const sendContactEmail = async (data) => {
     <body>
       <div class="container">
         <div class="header">
-          <h1>🚀 Nova Poruka sa Avangard Website</h1>
+          <h1>🚀 Nova Poruka sa Nova Studio Solutions Website</h1>
         </div>
         
         <div class="content">
@@ -111,7 +159,7 @@ const sendContactEmail = async (data) => {
         </div>
         
         <div class="footer">
-          <p>📧 Avangard Contact Form System</p>
+          <p>📧 Nova Studio Solutions Contact Form System</p>
           <p>Automatski generisana poruka - ne odgovarajte na ovaj email</p>
         </div>
       </div>
@@ -119,12 +167,12 @@ const sendContactEmail = async (data) => {
     </html>
   `;
     const mailOptions = {
-        from: process.env.EMAIL_FROM || 'contact@avangard.dev',
-        to: process.env.EMAIL_TO || 'hello@avangard.dev',
+        from: process.env.EMAIL_FROM || 'nova-solutions@novastudiosolutions.com',
+        to: process.env.EMAIL_TO || 'nova-solutions@novastudiosolutions.com',
         subject: `🚀 Nova poruka: ${data.projectType} - ${data.name}`,
         html: htmlContent,
         text: `
-      Nova poruka sa Avangard website-a:
+      Nova poruka sa Nova Studio Solutions website-a:
       
       Ime: ${data.name}
       Email: ${data.email}
@@ -159,6 +207,7 @@ const sendContactEmail = async (data) => {
 exports.sendContactEmail = sendContactEmail;
 const sendAutoReply = async (data) => {
     const transporter = createTransporter();
+    const template = emailTemplate;
     const htmlContent = `
     <!DOCTYPE html>
     <html>
@@ -180,91 +229,88 @@ const sendAutoReply = async (data) => {
     <body>
       <div class="container">
         <div class="header">
-          <h1>🚀 Hvala vam na interesovanju!</h1>
+          <h1>🚀 ${template.subject.split(' - ')[0]}</h1>
         </div>
-        
+
         <div class="content">
-          <p>Poštovani/a ${data.name},</p>
-          
-          <p>Hvala vam što ste nas kontaktirali u vezi sa vašim <strong>${data.projectType}</strong> projektom!</p>
-          
+          <p>${template.greeting} ${data.name},</p>
+
+          <p>${template.thankYou.replace('project', data.projectType)}</p>
+
           <div class="highlight">
-            <h3>✅ Vaša poruka je uspešno primljena</h3>
-            <p>Naš tim će analizirati vaše potrebe i kontaktirati vas u roku od <strong>24 sata</strong> sa detaljnim predlogom.</p>
+            <h3>✅ ${template.received}</h3>
+            <p>${template.responseTime}</p>
           </div>
-          
-          <h3>Šta sledi:</h3>
+
+          <h3>${template.whatFollowsTitle}</h3>
           <div class="features">
-            <div class="feature">📋 <strong>Analiza:</strong> Detaljno proučavamo vaše zahteve</div>
-            <div class="feature">💡 <strong>Strategija:</strong> Kreiramo customizovan pristup</div>
-            <div class="feature">📞 <strong>Konsultacije:</strong> Zakazujemo call sa tehničkim timom</div>
-            <div class="feature">📄 <strong>Predlog:</strong> Dostavljamo kompletnu projektnu dokumentaciju</div>
+            <div class="feature">📋 <strong>${template.whatFollows.analysis.split(':')[0]}:</strong> ${template.whatFollows.analysis.split(':')[1]}</div>
+            <div class="feature">💡 <strong>${template.whatFollows.strategy.split(':')[0]}:</strong> ${template.whatFollows.strategy.split(':')[1]}</div>
+            <div class="feature">📞 <strong>${template.whatFollows.consultation.split(':')[0]}:</strong> ${template.whatFollows.consultation.split(':')[1]}</div>
+            <div class="feature">📄 <strong>${template.whatFollows.proposal.split(':')[0]}:</strong> ${template.whatFollows.proposal.split(':')[1]}</div>
           </div>
-          
-          <h3>Zašto Avangard?</h3>
+
+          <h3>${template.whyNovaTitle}</h3>
           <div class="features">
-            <div class="feature">⚡ <strong>200+ uspešnih projekata</strong> u poslednje 4 godine</div>
-            <div class="feature">🌍 <strong>50+ globalnih klijenata</strong> u 15+ zemalja</div>
-            <div class="feature">🔒 <strong>99% success rate</strong> u implementaciji</div>
-            <div class="feature">🚀 <strong>24/7 podrška</strong> tokom celog projekta</div>
+            <div class="feature">⚡ <strong>${template.whyNova.fast.split(' - ')[0]}</strong> - ${template.whyNova.fast.split(' - ')[1]}</div>
+            <div class="feature">💰 <strong>${template.whyNova.affordable.split(' - ')[0]}</strong> - ${template.whyNova.affordable.split(' - ')[1]}</div>
+            <div class="feature">🔒 <strong>${template.whyNova.transparent.split(' - ')[0]}</strong> - ${template.whyNova.transparent.split(' - ')[1]}</div>
+            <div class="feature">🚀 <strong>${template.whyNova.support.split(' - ')[0]}</strong> - ${template.whyNova.support.split(' - ')[1]}</div>
           </div>
-          
-          <p>U međuvremenu, možete pogledati naše case studies i tehnički blog na:</p>
-          <a href="https://avangard.dev" class="cta">🔗 Posetite Avangard.dev</a>
-          
-          <p>Za hitne upite možete nas kontaktirati direktno:</p>
-          <p>📧 <strong>hello@avangard.dev</strong><br>
-          📞 <strong>+381 11 123 4567</strong></p>
+
+          <p>${template.urgentContact}</p>
+          <p>📧 <strong>nova-solutions@novastudiosolutions.com</strong></p>
         </div>
-        
+
         <div class="footer">
-          <p><strong>Avangard - Digitalna Transformacija Budućnosti</strong></p>
-          <p>Belgrade, Serbia | London, UK | New York, USA</p>
-          <p>Ova poruka je automatski generisana. Molimo ne odgovarajte na ovaj email.</p>
+          <p><strong>${template.footerCompany}</strong></p>
+          <p>${template.footerLocation}</p>
+          <p>${template.footerDisclaimer}</p>
         </div>
       </div>
     </body>
     </html>
   `;
     const mailOptions = {
-        from: process.env.EMAIL_FROM || 'hello@avangard.dev',
+        from: process.env.EMAIL_FROM || 'nova-solutions@novastudiosolutions.com',
         to: data.email,
-        subject: '🚀 Hvala na kontaktu - Avangard Tim će vam se javiti uskoro!',
+        subject: `🚀 ${template.subject}`,
         html: htmlContent,
         text: `
-      Poštovani/a ${data.name},
-      
-      Hvala vam što ste nas kontaktirali u vezi sa vašim ${data.projectType} projektom!
-      
-      ✅ Vaša poruka je uspešno primljena
-      
-      Naš tim će analizirati vaše potrebe i kontaktirati vas u roku od 24 sata sa detaljnim predlogom.
-      
-      Šta sledi:
-      📋 Analiza: Detaljno proučavamo vaše zahteve
-      💡 Strategija: Kreiramo customizovan pristup  
-      📞 Konsultacije: Zakazujemo call sa tehničkim timom
-      📄 Predlog: Dostavljamo kompletnu projektnu dokumentaciju
-      
-      Za hitne upite:
-      📧 hello@avangard.dev
-      📞 +381 11 123 4567
-      
-      Avangard - Digitalna Transformacija Budućnosti
-      Belgrade | London | New York
+      ${template.greeting} ${data.name},
+
+      ${template.thankYou.replace('project', data.projectType)}
+
+      ✅ ${template.received}
+
+      ${template.responseTime}
+
+      ${template.whatFollowsTitle}
+      📋 ${template.whatFollows.analysis}
+      💡 ${template.whatFollows.strategy}
+      📞 ${template.whatFollows.consultation}
+      📄 ${template.whatFollows.proposal}
+
+      ${template.urgentContact}
+      📧 nova-solutions@novastudiosolutions.com
+
+      ${template.footerCompany}
+      ${template.footerLocation}
     `
     };
     try {
         const result = await transporter.sendMail(mailOptions);
         logger_1.logger.info('Auto-reply sent successfully', {
             messageId: result.messageId,
-            recipient: data.email
+            recipient: data.email,
+            language: data.language
         });
     }
     catch (error) {
         logger_1.logger.error('Failed to send auto-reply', {
             error: error instanceof Error ? error.message : 'Unknown error',
-            recipient: data.email
+            recipient: data.email,
+            language: data.language
         });
     }
 };

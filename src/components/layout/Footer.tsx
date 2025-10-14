@@ -56,7 +56,7 @@ const Footer = () => {
           variants={itemVariants}
         >
           <div className="text-sm text-white/70">
-            {(t?.footer?.copyright || "© {year} Nova Studio. All rights reserved.").replace('{year}', currentYear.toString())}
+            {(t?.footer?.copyright || "© {year} Nova Studio Solutions. All rights reserved.").replace('{year}', currentYear.toString())}
           </div>
         </motion.div>
       </motion.div>

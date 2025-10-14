@@ -5,7 +5,6 @@ import { Suspense } from 'react'
 import { useTranslation } from '@/hooks/useTranslation'
 import {
   Mail,
-  MapPin,
   Clock,
   Send
 } from 'lucide-react'
@@ -23,16 +22,9 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: t?.contact?.email?.label || "Email",
-      value: "hello@avangard.dev",
-      href: "mailto:hello@avangard.dev",
+      value: "novastudiosolutions@outlook.com",
+      href: "mailto:novastudiosolutions@outlook.com",
       description: t?.contact?.email?.description || "For all inquiries and collaboration"
-    },
-    {
-      icon: MapPin,
-      label: t?.contact?.location?.label || "Location",
-      value: t?.contact?.location?.value || "Belgrade, Serbia",
-      href: "#",
-      description: t?.contact?.location?.description || "Knez Mihailova 42"
     },
     {
       icon: Clock,
@@ -140,7 +132,7 @@ const ContactSection = () => {
               </h3>
               
               {/* Contact Methods */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-3xl mx-auto">
                 {contactInfo.map((info, index) => (
                   <motion.a
                     key={index}

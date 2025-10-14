@@ -427,7 +427,7 @@ export const es = {
     location: {
       label: "Ubicación",
       value: "Belgrado, Serbia",
-      description: "Knez Mihailova 42"
+      description: "En construcción"
     },
     hours: {
       label: "Horario",
@@ -439,7 +439,7 @@ export const es = {
     navigation: {
       title: "Navegación"
     },
-    copyright: "© {year} Nova Studio. Todos los derechos reservados."
+    copyright: "© {year} Nova Studio Solutions. Todos los derechos reservados."
   },
   common: {
     loading: "Cargando...",
