@@ -10,7 +10,6 @@ import {
   Rocket,
   CheckCircle,
   Settings,
-  ArrowRight,
   ArrowDown,
   Target,
   Zap
