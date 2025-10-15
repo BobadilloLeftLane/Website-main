@@ -380,6 +380,19 @@ export const de = {
         required: false,
         optional: "(optional)"
       },
+      validation: {
+        nameMin: "Der Name muss mindestens 2 Zeichen lang sein",
+        nameMax: "Der Name darf maximal 100 Zeichen lang sein",
+        nameInvalid: "Der Name darf nur Buchstaben und Leerzeichen enthalten",
+        emailInvalid: "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        companyMax: "Der Firmenname darf maximal 200 Zeichen lang sein",
+        phoneInvalid: "Bitte geben Sie eine gültige Telefonnummer ein",
+        projectTypeRequired: "Bitte wählen Sie einen Projekttyp aus",
+        budgetRequired: "Bitte wählen Sie ein Budget aus",
+        timelineRequired: "Bitte wählen Sie einen Zeitrahmen aus",
+        messageMin: "Die Nachricht muss mindestens 10 Zeichen lang sein",
+        messageMax: "Die Nachricht darf maximal 2000 Zeichen lang sein"
+      },
       projectType: {
         label: "Projekttyp",
         placeholder: "Typ auswählen",

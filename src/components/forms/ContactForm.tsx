@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -8,61 +8,71 @@ import AnimatedButton from '@/components/common/AnimatedButton'
 import { useTranslation } from '@/hooks/useTranslation'
 import emailjs from '@emailjs/browser'
 
-// Form validation schema (validation messages will remain in Serbian/English for now - can be extracted later)
-const contactSchema = z.object({
-  name: z.string()
-    .min(2, 'Ime mora imati najmanje 2 karaktera')
-    .max(100, 'Ime može imati maksimalno 100 karaktera')
-    .regex(/^[a-zA-ZšđčćžŠĐČĆŽ\s]+$/, 'Ime može sadržavati samo slova i razmake'),
-
-  email: z.string()
-    .email('Molimo unesite validnu email adresu'),
-
-  company: z.string()
-    .max(200, 'Naziv kompanije može imati maksimalno 200 karaktera')
-    .optional(),
-
-  phone: z.string()
-    .regex(/^[\+]?[1-9][\d]{0,15}$/, 'Molimo unesite validan broj telefona')
-    .optional()
-    .or(z.literal('')),
-
-  projectType: z.enum([
-    'SaaS Development',
-    'Web Application',
-    'Digital Transformation',
-    'API Integration',
-    'Mobile App',
-    'Cloud Migration',
-    'Other'
-  ], { errorMap: () => ({ message: 'Molimo izaberite tip projekta' }) }),
-
-  budget: z.enum([
-    '<$50k',
-    '$50k-$100k',
-    '$100k-$250k',
-    '$250k-$500k',
-    '$500k+'
-  ], { errorMap: () => ({ message: 'Molimo izaberite budžet' }) }),
-
-  timeline: z.enum([
-    '<3 months',
-    '3-6 months',
-    '6-12 months',
-    '12+ months'
-  ], { errorMap: () => ({ message: 'Molimo izaberite vremenski okvir' }) }),
-
-  message: z.string()
-    .min(10, 'Poruka mora imati najmanje 10 karaktera')
-    .max(2000, 'Poruka može imati maksimalno 2000 karaktera')
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
+type ContactFormData = {
+  name: string
+  email: string
+  company?: string
+  phone?: string
+  projectType: string
+  budget: string
+  timeline: string
+  message: string
+}
 
 const ContactForm = () => {
   const { t, currentLanguage } = useTranslation()
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const isSubmittingRef = useRef(false)
+
+  // Dynamic validation schema based on current language
+  const contactSchema = useMemo(() => z.object({
+    name: z.string()
+      .min(2, t?.contact?.form?.validation?.nameMin || 'Name must be at least 2 characters')
+      .max(100, t?.contact?.form?.validation?.nameMax || 'Name can be maximum 100 characters')
+      .regex(/^[a-zA-ZšđčćžŠĐČĆŽÀ-ÿ\s]+$/, t?.contact?.form?.validation?.nameInvalid || 'Name can only contain letters and spaces'),
+
+    email: z.string()
+      .email(t?.contact?.form?.validation?.emailInvalid || 'Please enter a valid email address'),
+
+    company: z.string()
+      .max(200, t?.contact?.form?.validation?.companyMax || 'Company name can be maximum 200 characters')
+      .optional(),
+
+    phone: z.string()
+      .regex(/^[\+]?[1-9][\d]{0,15}$/, t?.contact?.form?.validation?.phoneInvalid || 'Please enter a valid phone number')
+      .optional()
+      .or(z.literal('')),
+
+    projectType: z.enum([
+      'SaaS Development',
+      'Web Application',
+      'Digital Transformation',
+      'API Integration',
+      'Mobile App',
+      'Cloud Migration',
+      'Other'
+    ], { errorMap: () => ({ message: t?.contact?.form?.validation?.projectTypeRequired || 'Please select a project type' }) }),
+
+    budget: z.enum([
+      '<$50k',
+      '$50k-$100k',
+      '$100k-$250k',
+      '$250k-$500k',
+      '$500k+'
+    ], { errorMap: () => ({ message: t?.contact?.form?.validation?.budgetRequired || 'Please select a budget' }) }),
+
+    timeline: z.enum([
+      '<3 months',
+      '3-6 months',
+      '6-12 months',
+      '12+ months'
+    ], { errorMap: () => ({ message: t?.contact?.form?.validation?.timelineRequired || 'Please select a timeline' }) }),
+
+    message: z.string()
+      .min(10, t?.contact?.form?.validation?.messageMin || 'Message must be at least 10 characters')
+      .max(2000, t?.contact?.form?.validation?.messageMax || 'Message can be maximum 2000 characters')
+  }), [t, currentLanguage])
 
   const {
     register,
@@ -74,8 +84,19 @@ const ContactForm = () => {
   })
 
   const onSubmit = async (data: ContactFormData) => {
+    // Prevent double submission
+    if (isSubmittingRef.current) {
+      console.warn('⚠️ Form submission already in progress, ignoring duplicate submit')
+      return
+    }
+
+    isSubmittingRef.current = true
     setSubmitStatus('loading')
     setErrorMessage('')
+
+    // Generate unique submission ID for tracking
+    const submissionId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    console.log('🚀 Starting form submission:', submissionId)
 
     // Track if main email was sent successfully
     let mainEmailSent = false
@@ -115,27 +136,29 @@ const ContactForm = () => {
 
       // Send auto-reply to customer (if template is configured)
       const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID
-      console.log('Auto-reply template ID:', autoReplyTemplateId)
+      console.log(`📧 [${submissionId}] Auto-reply template ID:`, autoReplyTemplateId)
 
       if (autoReplyTemplateId &&
           autoReplyTemplateId !== 'your_autoreply_template_id_here' &&
           autoReplyTemplateId !== 'template_xyz789' &&
           autoReplyTemplateId !== '') {
         try {
-          console.log('Attempting to send auto-reply...')
+          console.log(`📤 [${submissionId}] Attempting to send auto-reply...`)
           const autoReplyResponse = await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey)
-          console.log('EmailJS Response (auto-reply):', autoReplyResponse)
+          console.log(`✅ [${submissionId}] Auto-reply sent successfully:`, autoReplyResponse)
         } catch (autoReplyError) {
-          console.error('Auto-reply email failed:', autoReplyError)
+          console.error(`❌ [${submissionId}] Auto-reply email failed:`, autoReplyError)
           // Continue anyway - main email was sent successfully
           // Do NOT throw error - we want the form to show success even if auto-reply fails
         }
       } else {
-        console.log('Auto-reply skipped - template not configured or invalid')
+        console.log(`⏭️ [${submissionId}] Auto-reply skipped - template not configured or invalid`)
       }
 
       setSubmitStatus('success')
       reset()
+      isSubmittingRef.current = false
+      console.log(`✅ [${submissionId}] Form submission completed successfully`)
 
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -143,21 +166,24 @@ const ContactForm = () => {
       }, 5000)
 
     } catch (error) {
-      console.error('EmailJS Error:', error)
+      console.error(`❌ [${submissionId}] EmailJS Error:`, error)
 
       // If main email was sent successfully, show success anyway
       if (mainEmailSent) {
-        console.log('Main email sent successfully, showing success despite later error')
+        console.log(`✅ [${submissionId}] Main email sent successfully, showing success despite later error`)
         setSubmitStatus('success')
         reset()
+        isSubmittingRef.current = false
 
         setTimeout(() => {
           setSubmitStatus('idle')
         }, 5000)
       } else {
         // Main email failed, show error
+        console.error(`❌ [${submissionId}] Main email failed`)
         setSubmitStatus('error')
         setErrorMessage(error instanceof Error ? error.message : 'Došlo je do neočekivane greške. Molimo pokušajte ponovo.')
+        isSubmittingRef.current = false
 
         // Reset error after 5 seconds
         setTimeout(() => {

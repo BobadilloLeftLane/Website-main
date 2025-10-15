@@ -369,6 +369,19 @@ export const sr = {
         required: false,
         optional: "(opciono)"
       },
+      validation: {
+        nameMin: "Ime mora imati najmanje 2 karaktera",
+        nameMax: "Ime može imati maksimalno 100 karaktera",
+        nameInvalid: "Ime može sadržavati samo slova i razmake",
+        emailInvalid: "Molimo unesite validnu email adresu",
+        companyMax: "Naziv kompanije može imati maksimalno 200 karaktera",
+        phoneInvalid: "Molimo unesite validan broj telefona",
+        projectTypeRequired: "Molimo izaberite tip projekta",
+        budgetRequired: "Molimo izaberite budžet",
+        timelineRequired: "Molimo izaberite vremenski okvir",
+        messageMin: "Poruka mora imati najmanje 10 karaktera",
+        messageMax: "Poruka može imati maksimalno 2000 karaktera"
+      },
       projectType: {
         label: "Tip Projekta",
         placeholder: "Izaberite tip",

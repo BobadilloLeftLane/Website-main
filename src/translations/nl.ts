@@ -369,6 +369,19 @@ export const nl = {
         required: false,
         optional: "(optioneel)"
       },
+      validation: {
+        nameMin: "Naam moet minstens 2 tekens zijn",
+        nameMax: "Naam kan maximaal 100 tekens bevatten",
+        nameInvalid: "Naam mag alleen letters en spaties bevatten",
+        emailInvalid: "Voer een geldig e-mailadres in",
+        companyMax: "Bedrijfsnaam kan maximaal 200 tekens bevatten",
+        phoneInvalid: "Voer een geldig telefoonnummer in",
+        projectTypeRequired: "Selecteer een projecttype",
+        budgetRequired: "Selecteer een budget",
+        timelineRequired: "Selecteer een tijdsbestek",
+        messageMin: "Bericht moet minstens 10 tekens zijn",
+        messageMax: "Bericht kan maximaal 2000 tekens bevatten"
+      },
       projectType: {
         label: "Projecttype",
         placeholder: "Selecteer type",

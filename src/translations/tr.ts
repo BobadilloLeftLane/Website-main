@@ -369,6 +369,19 @@ export const tr = {
         required: false,
         optional: "(opsiyonel)"
       },
+      validation: {
+        nameMin: "Ad en az 2 karakter olmalıdır",
+        nameMax: "Ad en fazla 100 karakter olabilir",
+        nameInvalid: "Ad sadece harf ve boşluk içerebilir",
+        emailInvalid: "Lütfen geçerli bir e-posta adresi girin",
+        companyMax: "Şirket adı en fazla 200 karakter olabilir",
+        phoneInvalid: "Lütfen geçerli bir telefon numarası girin",
+        projectTypeRequired: "Lütfen bir proje türü seçin",
+        budgetRequired: "Lütfen bir bütçe seçin",
+        timelineRequired: "Lütfen bir zaman çizelgesi seçin",
+        messageMin: "Mesaj en az 10 karakter olmalıdır",
+        messageMax: "Mesaj en fazla 2000 karakter olabilir"
+      },
       projectType: {
         label: "Proje Türü",
         placeholder: "Tür seçin",

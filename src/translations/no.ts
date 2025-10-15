@@ -369,6 +369,19 @@ export const no = {
         required: false,
         optional: "(valgfritt)"
       },
+      validation: {
+        nameMin: "Navnet må være minst 2 tegn",
+        nameMax: "Navnet kan være maks 100 tegn",
+        nameInvalid: "Navnet kan bare inneholde bokstaver og mellomrom",
+        emailInvalid: "Vennligst oppgi en gyldig e-postadresse",
+        companyMax: "Firmanavnet kan være maks 200 tegn",
+        phoneInvalid: "Vennligst oppgi et gyldig telefonnummer",
+        projectTypeRequired: "Vennligst velg en prosjekttype",
+        budgetRequired: "Vennligst velg et budsjett",
+        timelineRequired: "Vennligst velg en tidsramme",
+        messageMin: "Meldingen må være minst 10 tegn",
+        messageMax: "Meldingen kan være maks 2000 tegn"
+      },
       projectType: {
         label: "Prosjekttype",
         placeholder: "Velg type",

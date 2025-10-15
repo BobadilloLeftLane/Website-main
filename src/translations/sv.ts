@@ -369,6 +369,19 @@ export const sv = {
         required: false,
         optional: "(valfritt)"
       },
+      validation: {
+        nameMin: "Namnet måste vara minst 2 tecken",
+        nameMax: "Namnet kan vara högst 100 tecken",
+        nameInvalid: "Namnet får endast innehålla bokstäver och mellanslag",
+        emailInvalid: "Vänligen ange en giltig e-postadress",
+        companyMax: "Företagsnamnet kan vara högst 200 tecken",
+        phoneInvalid: "Vänligen ange ett giltigt telefonnummer",
+        projectTypeRequired: "Vänligen välj en projekttyp",
+        budgetRequired: "Vänligen välj en budget",
+        timelineRequired: "Vänligen välj en tidsram",
+        messageMin: "Meddelandet måste vara minst 10 tecken",
+        messageMax: "Meddelandet kan vara högst 2000 tecken"
+      },
       projectType: {
         label: "Projekttyp",
         placeholder: "Välj typ",

@@ -370,6 +370,19 @@ export const et = {
         required: false,
         optional: "(valikuline)"
       },
+      validation: {
+        nameMin: "Nimi peab olema vähemalt 2 tähemärki",
+        nameMax: "Nimi võib olla kuni 100 tähemärki",
+        nameInvalid: "Nimi võib sisaldada ainult tähti ja tühikuid",
+        emailInvalid: "Palun sisestage kehtiv e-posti aadress",
+        companyMax: "Ettevõtte nimi võib olla kuni 200 tähemärki",
+        phoneInvalid: "Palun sisestage kehtiv telefoninumber",
+        projectTypeRequired: "Palun valige projekti tüüp",
+        budgetRequired: "Palun valige eelarve",
+        timelineRequired: "Palun valige ajakava",
+        messageMin: "Sõnum peab olema vähemalt 10 tähemärki",
+        messageMax: "Sõnum võib olla kuni 2000 tähemärki"
+      },
       projectType: {
         label: "Projekti Tüüp",
         placeholder: "Valige tüüp",

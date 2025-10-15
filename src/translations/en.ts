@@ -369,6 +369,19 @@ export const en = {
         required: false,
         optional: "(optional)"
       },
+      validation: {
+        nameMin: "Name must be at least 2 characters",
+        nameMax: "Name can have a maximum of 100 characters",
+        nameInvalid: "Name can only contain letters and spaces",
+        emailInvalid: "Please enter a valid email address",
+        companyMax: "Company name can have a maximum of 200 characters",
+        phoneInvalid: "Please enter a valid phone number",
+        projectTypeRequired: "Please select a project type",
+        budgetRequired: "Please select a budget",
+        timelineRequired: "Please select a timeframe",
+        messageMin: "Message must be at least 10 characters",
+        messageMax: "Message can have a maximum of 2000 characters"
+      },
       projectType: {
         label: "Project Type",
         placeholder: "Select type",
