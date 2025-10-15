@@ -175,7 +175,7 @@ const LanguageSelector = () => {
   return (
       <div className="relative" ref={dropdownRef}>
       <motion.button
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg glass-morphism transition-colors"
+        className="flex items-center space-x-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg glass-morphism transition-colors touch-manipulation"
         style={{ backgroundColor: 'var(--bg-glass)' }}
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
@@ -184,16 +184,19 @@ const LanguageSelector = () => {
         <div className="inline-flex items-center justify-center rounded-sm overflow-hidden border border-white/10">
           <currentLangData.flag />
         </div>
-        <ChevronDown 
-          className={`w-3 h-3 text-theme-secondary transition-transform ${isOpen ? 'rotate-180' : ''}`}
+        <ChevronDown
+          className={`w-4 h-4 text-theme-secondary transition-transform ${isOpen ? 'rotate-180' : ''}`}
         />
       </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full mt-2 right-0 min-w-[160px] max-w-[200px] glass-morphism rounded-lg border border-theme-primary overflow-hidden z-50 max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-electric-blue/30 scrollbar-track-transparent"
-            style={{ backgroundColor: 'var(--bg-glass)' }}
+            className="absolute top-full mt-2 right-0 w-[180px] sm:w-[200px] glass-morphism rounded-lg border border-theme-primary overflow-hidden z-50 max-h-[70vh] sm:max-h-[60vh] overflow-y-auto"
+            style={{
+              backgroundColor: 'var(--bg-glass)',
+              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)'
+            }}
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -202,16 +205,17 @@ const LanguageSelector = () => {
             {languages.map((language) => (
               <motion.button
                 key={language.code}
-                className={`w-full flex items-center space-x-2 px-3 py-2.5 text-left transition-colors ${
+                className={`w-full flex items-center space-x-3 px-4 py-3 text-left transition-colors touch-manipulation ${
                   currentLanguage === language.code ? 'bg-electric-blue/20' : ''
                 }`}
                 onClick={() => handleLanguageChange(language)}
                 whileHover={{ backgroundColor: 'var(--bg-tertiary)' }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="inline-flex items-center justify-center rounded-sm overflow-hidden border border-white/10 flex-shrink-0">
                   <language.flag />
                 </div>
-                <span className="text-xs sm:text-sm font-medium text-theme-primary whitespace-nowrap overflow-hidden text-ellipsis">{language.name}</span>
+                <span className="text-sm font-medium text-theme-primary whitespace-nowrap">{language.name}</span>
               </motion.button>
             ))}
           </motion.div>
