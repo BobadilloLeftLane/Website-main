@@ -142,43 +142,43 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Language and Theme Controls */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* Language and Theme Controls - Always Visible */}
+          <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
             <ThemeToggle />
             <LanguageSelector />
-          </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="lg:hidden p-1.5 sm:p-2 -mr-2 sm:mr-0 text-theme-secondary hover:text-electric-blue"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <AnimatePresence mode="wait">
-              {isMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="lg:hidden p-1.5 sm:p-2 -mr-2 sm:mr-0 text-theme-secondary hover:text-electric-blue"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <AnimatePresence mode="wait">
+                {isMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -207,10 +207,6 @@ const Header = () => {
                     </button>
                   </motion.div>
                 ))}
-                <motion.div variants={mobileItemVariants} className="pt-2 flex items-center justify-center space-x-3">
-                  <ThemeToggle />
-                  <LanguageSelector />
-                </motion.div>
               </nav>
             </motion.div>
           )}
