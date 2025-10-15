@@ -98,15 +98,15 @@ const Header = () => {
       variants={headerVariants}
       animate={isScrolled ? 'scrolled' : 'top'}
     >
-      <div className="container-wide section-padding">
-        <div className="flex items-center justify-between py-4">
+      <div className="container-wide px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-2 sm:py-3 lg:py-4">
           {/* Logo */}
-          <button onClick={() => scrollToSection('home')} className="flex items-center">
+          <button onClick={() => scrollToSection('home')} className="flex items-center -ml-2 sm:ml-0">
             <motion.div
               variants={logoVariants}
               whileHover="hover"
             >
-              <LogoIcon size={64} className="text-electric-blue" />
+              <LogoIcon size={48} className="text-electric-blue sm:w-16 sm:h-16" />
             </motion.div>
           </button>
 
@@ -150,7 +150,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="lg:hidden p-2 text-theme-secondary hover:text-electric-blue"
+            className="lg:hidden p-1.5 sm:p-2 -mr-2 sm:mr-0 text-theme-secondary hover:text-electric-blue"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -164,7 +164,7 @@ const Header = () => {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -174,7 +174,7 @@ const Header = () => {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -185,21 +185,21 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="lg:hidden py-4 border-t-0"
+              className="lg:hidden py-3 border-t-0"
               style={{ backgroundColor: 'transparent' }}
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="hidden"
             >
-              <nav className="flex flex-col space-y-4">
+              <nav className="flex flex-col space-y-3">
                 {navigationSections.map((section) => (
                   <motion.div key={section.id} variants={mobileItemVariants}>
                     <button
                       onClick={() => handleNavClick(section.id)}
-                      className={`block text-base font-medium transition-colors w-full text-left ${
+                      className={`block text-sm sm:text-base font-medium transition-colors w-full text-left ${
                         activeSection === section.id
-                          ? 'text-electric-blue' 
+                          ? 'text-electric-blue'
                           : 'text-theme-secondary hover:text-electric-blue'
                       }`}
                     >
@@ -207,7 +207,7 @@ const Header = () => {
                     </button>
                   </motion.div>
                 ))}
-                <motion.div variants={mobileItemVariants} className="pt-4 flex items-center justify-center space-x-4">
+                <motion.div variants={mobileItemVariants} className="pt-2 flex items-center justify-center space-x-3">
                   <ThemeToggle />
                   <LanguageSelector />
                 </motion.div>
