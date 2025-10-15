@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { Send, CheckCircle, AlertCircle, Loader } from 'lucide-react'
 import AnimatedButton from '@/components/common/AnimatedButton'
 import { useTranslation } from '@/hooks/useTranslation'
+import emailjs from '@emailjs/browser'
 
 // Form validation schema (validation messages will remain in Serbian/English for now - can be extracted later)
 const contactSchema = z.object({
@@ -77,25 +78,32 @@ const ContactForm = () => {
     setErrorMessage('')
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...data,
-          language: currentLanguage
-        }),
-      })
+      // EmailJS configuration
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
 
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.error || 'Došlo je do greške')
+      // Prepare template parameters
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        company: data.company || 'N/A',
+        phone: data.phone || 'N/A',
+        project_type: data.projectType,
+        budget: data.budget,
+        timeline: data.timeline,
+        message: data.message,
+        language: currentLanguage,
+        to_name: 'Nova Studio Solutions',
+        reply_to: data.email
       }
+
+      // Send email via EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
       setSubmitStatus('success')
       reset()
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle')
@@ -103,8 +111,8 @@ const ContactForm = () => {
 
     } catch (error) {
       setSubmitStatus('error')
-      setErrorMessage(error instanceof Error ? error.message : 'Došlo je do neočekivane greške')
-      
+      setErrorMessage(error instanceof Error ? error.message : 'Došlo je do neočekivane greške. Molimo pokušajte ponovo.')
+
       // Reset error after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle')
