@@ -109,7 +109,10 @@ const ContactForm = () => {
 
       // Send auto-reply to customer (if template is configured)
       const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID
-      if (autoReplyTemplateId && autoReplyTemplateId !== 'your_autoreply_template_id_here' && autoReplyTemplateId !== '') {
+      if (autoReplyTemplateId &&
+          autoReplyTemplateId !== 'your_autoreply_template_id_here' &&
+          autoReplyTemplateId !== 'template_xyz789' &&
+          autoReplyTemplateId !== '') {
         try {
           const autoReplyResponse = await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey)
           console.log('EmailJS Response (auto-reply):', autoReplyResponse)
