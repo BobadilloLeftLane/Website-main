@@ -109,17 +109,23 @@ const ContactForm = () => {
 
       // Send auto-reply to customer (if template is configured)
       const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID
+      console.log('Auto-reply template ID:', autoReplyTemplateId)
+
       if (autoReplyTemplateId &&
           autoReplyTemplateId !== 'your_autoreply_template_id_here' &&
           autoReplyTemplateId !== 'template_xyz789' &&
           autoReplyTemplateId !== '') {
         try {
+          console.log('Attempting to send auto-reply...')
           const autoReplyResponse = await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey)
           console.log('EmailJS Response (auto-reply):', autoReplyResponse)
         } catch (autoReplyError) {
-          console.warn('Auto-reply email failed (template may not be configured):', autoReplyError)
+          console.error('Auto-reply email failed:', autoReplyError)
           // Continue anyway - main email was sent successfully
+          // Do NOT throw error - we want the form to show success even if auto-reply fails
         }
+      } else {
+        console.log('Auto-reply skipped - template not configured or invalid')
       }
 
       setSubmitStatus('success')
