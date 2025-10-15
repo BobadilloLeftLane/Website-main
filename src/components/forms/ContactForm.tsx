@@ -215,7 +215,7 @@ const ContactForm = () => {
 
       <motion.div variants={fieldVariants}>
         <label className="block text-sm font-medium text-silver mb-2">
-          {t?.contact?.form?.company?.label || "Kompanija"} <span className="text-silver/50 text-xs">(optional)</span>
+          {t?.contact?.form?.company?.label || "Kompanija"} <span className="text-silver/50 text-xs">{t?.contact?.form?.company?.optional || "(optional)"}</span>
         </label>
         <motion.input
           type="text"
@@ -239,7 +239,7 @@ const ContactForm = () => {
 
       <motion.div variants={fieldVariants}>
         <label className="block text-sm font-medium text-silver mb-2">
-          {t?.contact?.form?.phone?.label || "Telefon"} <span className="text-silver/50 text-xs">(optional)</span>
+          {t?.contact?.form?.phone?.label || "Telefon"} <span className="text-silver/50 text-xs">{t?.contact?.form?.phone?.optional || "(optional)"}</span>
         </label>
         <motion.input
           type="tel"

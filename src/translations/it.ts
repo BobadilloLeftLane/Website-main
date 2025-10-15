@@ -360,12 +360,14 @@ export const it = {
       company: {
         label: "Azienda",
         placeholder: "Nome della vostra azienda",
-        required: false
+        required: false,
+        optional: "(facoltativo)"
       },
       phone: {
         label: "Telefono",
         placeholder: "+39 02 1234 5678",
-        required: false
+        required: false,
+        optional: "(facoltativo)"
       },
       projectType: {
         label: "Tipo di Progetto",

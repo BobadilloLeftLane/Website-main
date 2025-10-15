@@ -371,12 +371,14 @@ export const de = {
       company: {
         label: "Unternehmen",
         placeholder: "Ihr Unternehmensname",
-        required: false
+        required: false,
+        optional: "(optional)"
       },
       phone: {
         label: "Telefon",
         placeholder: "+49 30 123 4567",
-        required: false
+        required: false,
+        optional: "(optional)"
       },
       projectType: {
         label: "Projekttyp",

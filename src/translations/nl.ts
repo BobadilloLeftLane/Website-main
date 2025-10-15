@@ -360,12 +360,14 @@ export const nl = {
       company: {
         label: "Bedrijf",
         placeholder: "Uw bedrijfsnaam",
-        required: false
+        required: false,
+        optional: "(optioneel)"
       },
       phone: {
         label: "Telefoon",
         placeholder: "+31 20 123 4567",
-        required: false
+        required: false,
+        optional: "(optioneel)"
       },
       projectType: {
         label: "Projecttype",

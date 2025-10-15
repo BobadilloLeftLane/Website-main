@@ -360,12 +360,14 @@ export const el = {
       company: {
         label: "Εταιρεία",
         placeholder: "Το όνομα της εταιρείας σας",
-        required: false
+        required: false,
+        optional: "(προαιρετικό)"
       },
       phone: {
         label: "Τηλέφωνο",
         placeholder: "+30 210 123 4567",
-        required: false
+        required: false,
+        optional: "(προαιρετικό)"
       },
       projectType: {
         label: "Τύπος Έργου",

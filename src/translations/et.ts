@@ -361,12 +361,14 @@ export const et = {
       company: {
         label: "Ettevõte",
         placeholder: "Teie ettevõtte nimi",
-        required: false
+        required: false,
+        optional: "(valikuline)"
       },
       phone: {
         label: "Telefon",
         placeholder: "+372 5123 4567",
-        required: false
+        required: false,
+        optional: "(valikuline)"
       },
       projectType: {
         label: "Projekti Tüüp",

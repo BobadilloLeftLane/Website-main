@@ -360,12 +360,14 @@ export const sr = {
       company: {
         label: "Kompanija",
         placeholder: "Naziv vaše kompanije",
-        required: false
+        required: false,
+        optional: "(opciono)"
       },
       phone: {
         label: "Telefon",
         placeholder: "+381 11 123 4567",
-        required: false
+        required: false,
+        optional: "(opciono)"
       },
       projectType: {
         label: "Tip Projekta",

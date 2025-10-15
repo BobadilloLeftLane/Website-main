@@ -360,12 +360,14 @@ export const sv = {
       company: {
         label: "Företag",
         placeholder: "Ert företagsnamn",
-        required: false
+        required: false,
+        optional: "(valfritt)"
       },
       phone: {
         label: "Telefon",
         placeholder: "+46 8 123 4567",
-        required: false
+        required: false,
+        optional: "(valfritt)"
       },
       projectType: {
         label: "Projekttyp",

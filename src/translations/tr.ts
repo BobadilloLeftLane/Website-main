@@ -360,12 +360,14 @@ export const tr = {
       company: {
         label: "Şirket",
         placeholder: "Şirket adınız",
-        required: false
+        required: false,
+        optional: "(opsiyonel)"
       },
       phone: {
         label: "Telefon",
         placeholder: "+90 555 123 4567",
-        required: false
+        required: false,
+        optional: "(opsiyonel)"
       },
       projectType: {
         label: "Proje Türü",

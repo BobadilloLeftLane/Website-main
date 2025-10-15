@@ -360,12 +360,14 @@ export const no = {
       company: {
         label: "Firma",
         placeholder: "Firmanavnet ditt",
-        required: false
+        required: false,
+        optional: "(valgfritt)"
       },
       phone: {
         label: "Telefon",
         placeholder: "+47 22 123 4567",
-        required: false
+        required: false,
+        optional: "(valgfritt)"
       },
       projectType: {
         label: "Prosjekttype",
