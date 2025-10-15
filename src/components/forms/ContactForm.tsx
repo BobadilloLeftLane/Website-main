@@ -77,6 +77,9 @@ const ContactForm = () => {
     setSubmitStatus('loading')
     setErrorMessage('')
 
+    // Track if main email was sent successfully
+    let mainEmailSent = false
+
     try {
       // EmailJS configuration
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
@@ -106,6 +109,9 @@ const ContactForm = () => {
       // Send email to company
       const response = await emailjs.send(serviceId, templateId, templateParams, publicKey)
       console.log('EmailJS Response (to company):', response)
+
+      // Mark main email as successfully sent
+      mainEmailSent = true
 
       // Send auto-reply to customer (if template is configured)
       const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID
@@ -138,14 +144,27 @@ const ContactForm = () => {
 
     } catch (error) {
       console.error('EmailJS Error:', error)
-      setSubmitStatus('error')
-      setErrorMessage(error instanceof Error ? error.message : 'Došlo je do neočekivane greške. Molimo pokušajte ponovo.')
 
-      // Reset error after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle')
-        setErrorMessage('')
-      }, 5000)
+      // If main email was sent successfully, show success anyway
+      if (mainEmailSent) {
+        console.log('Main email sent successfully, showing success despite later error')
+        setSubmitStatus('success')
+        reset()
+
+        setTimeout(() => {
+          setSubmitStatus('idle')
+        }, 5000)
+      } else {
+        // Main email failed, show error
+        setSubmitStatus('error')
+        setErrorMessage(error instanceof Error ? error.message : 'Došlo je do neočekivane greške. Molimo pokušajte ponovo.')
+
+        // Reset error after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus('idle')
+          setErrorMessage('')
+        }, 5000)
+      }
     }
   }
 
