@@ -3,7 +3,6 @@ import Layout from '@/components/layout/Layout'
 import Homepage from '@/pages/Homepage'
 import TranslationProvider from '@/components/providers/TranslationProvider'
 import CookieConsent from '@/components/common/CookieConsent'
-import LanguageModal from '@/components/common/LanguageModal'
 import { initSmoothScroll } from '@/utils/smoothScroll'
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
   return (
     <TranslationProvider>
       <CookieConsent />
-      <LanguageModal />
       <Layout>
         <Homepage />
       </Layout>
