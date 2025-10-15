@@ -83,6 +83,9 @@ const ContactForm = () => {
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
 
+      // Debug logging
+      console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey.substring(0, 5) + '...' })
+
       // Prepare template parameters
       const templateParams = {
         from_name: data.name,
@@ -98,8 +101,11 @@ const ContactForm = () => {
         reply_to: data.email
       }
 
+      console.log('Template Params:', templateParams)
+
       // Send email via EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      console.log('EmailJS Response:', response)
 
       setSubmitStatus('success')
       reset()
@@ -110,6 +116,7 @@ const ContactForm = () => {
       }, 5000)
 
     } catch (error) {
+      console.error('EmailJS Error:', error)
       setSubmitStatus('error')
       setErrorMessage(error instanceof Error ? error.message : 'Došlo je do neočekivane greške. Molimo pokušajte ponovo.')
 
