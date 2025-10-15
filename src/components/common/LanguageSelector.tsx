@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { useTranslation, type Language } from '@/hooks/useTranslation'
@@ -144,6 +144,7 @@ const languages: LanguageOption[] = [
 const LanguageSelector = () => {
   const { currentLanguage, setLanguage } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const currentLangData = languages.find(lang => lang.code === currentLanguage) || languages[0]
 
@@ -152,8 +153,27 @@ const LanguageSelector = () => {
     setIsOpen(false)
   }
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
+  }, [isOpen])
+
   return (
-      <div className="relative">
+      <div className="relative" ref={dropdownRef}>
       <motion.button
         className="flex items-center space-x-2 px-3 py-2 rounded-lg glass-morphism transition-colors"
         style={{ backgroundColor: 'var(--bg-glass)' }}
@@ -172,7 +192,7 @@ const LanguageSelector = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full mt-2 right-0 min-w-[140px] glass-morphism rounded-lg border border-theme-primary overflow-hidden z-50"
+            className="absolute top-full mt-2 right-0 min-w-[160px] max-w-[200px] glass-morphism rounded-lg border border-theme-primary overflow-hidden z-50 max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-electric-blue/30 scrollbar-track-transparent"
             style={{ backgroundColor: 'var(--bg-glass)' }}
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -182,16 +202,16 @@ const LanguageSelector = () => {
             {languages.map((language) => (
               <motion.button
                 key={language.code}
-                className={`w-full flex items-center space-x-3 px-4 py-3 text-left transition-colors ${
+                className={`w-full flex items-center space-x-2 px-3 py-2.5 text-left transition-colors ${
                   currentLanguage === language.code ? 'bg-electric-blue/20' : ''
                 }`}
                 onClick={() => handleLanguageChange(language)}
                 whileHover={{ backgroundColor: 'var(--bg-tertiary)' }}
               >
-                <div className="inline-flex items-center justify-center rounded-sm overflow-hidden border border-white/10">
+                <div className="inline-flex items-center justify-center rounded-sm overflow-hidden border border-white/10 flex-shrink-0">
                   <language.flag />
                 </div>
-                <span className="text-sm font-medium text-theme-primary">{language.name}</span>
+                <span className="text-xs sm:text-sm font-medium text-theme-primary whitespace-nowrap overflow-hidden text-ellipsis">{language.name}</span>
               </motion.button>
             ))}
           </motion.div>
