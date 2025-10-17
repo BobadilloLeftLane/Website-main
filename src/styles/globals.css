@@ -1,9 +1,9 @@
+/* Self-hosted fonts for GDPR compliance */
+@import './fonts.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Self-hosted fonts for GDPR compliance */
-@import './fonts.css';
 
 /* Custom CSS variables */
 :root {
