@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState, useCallback } from 'react'
-import { ArrowRight, Star, Zap, Globe, Users } from 'lucide-react'
+import { ArrowRight, Star, Zap, Users } from 'lucide-react'
 import CyberpunkPlanet from '@/components/3d/CyberpunkPlanet'
 import AnimatedButton from '@/components/common/AnimatedButton'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -56,8 +56,7 @@ const HeroSection = () => {
   const stats = [
     { number: "2", label: t?.hero?.stats?.founders || "Founders", icon: Users, suffix: "" },
     { number: "20+", label: t?.hero?.stats?.experience || "Years Experience", icon: Star, suffix: "" },
-    { number: t?.hero?.stats?.fastNumber || "Fast", label: t?.hero?.stats?.fastLabel || "Development", icon: Zap, suffix: "" },
-    { number: t?.hero?.stats?.locationNumber || "Novi Sad", label: t?.hero?.stats?.locationLabel || "Serbia", icon: Globe, suffix: "" }
+    { number: t?.hero?.stats?.fastNumber || "Fast", label: t?.hero?.stats?.fastLabel || "Development", icon: Zap, suffix: "" }
   ]
 
   const features = [
@@ -233,11 +232,11 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Stats */}
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-3xl mx-auto"
           variants={{
             hidden: { opacity: 0 },
-            visible: { 
+            visible: {
               opacity: 1,
               transition: { delay: 1.7, duration: 0.6, staggerChildren: 0.1 }
             }
