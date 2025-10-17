@@ -1,14 +1,9 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useState } from 'react'
-import PrivacyPolicyModal from '@/components/common/PrivacyPolicyModal'
-import TermsModal from '@/components/common/TermsModal'
 
 const Footer = () => {
   const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
-  const [showPrivacy, setShowPrivacy] = useState(false)
-  const [showTerms, setShowTerms] = useState(false)
 
   const containerVariants = {
     hidden: { 
@@ -47,51 +42,47 @@ const Footer = () => {
   }
 
   return (
-    <>
-      {/* Privacy Policy Modal */}
-      <PrivacyPolicyModal isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
-
-      {/* Terms & Conditions Modal */}
-      <TermsModal isOpen={showTerms} onClose={() => setShowTerms(false)} />
-
-      <footer className="bg-transparent border-t-0 relative">
+    <footer className="bg-transparent border-t-0 relative">
+      <motion.div
+        className="container-wide section-padding"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
+      >
+        {/* Bottom Bar */}
         <motion.div
-          className="container-wide section-padding"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
+          className="py-16 text-center space-y-4"
+          variants={itemVariants}
         >
-          {/* Bottom Bar */}
-          <motion.div
-            className="py-16 text-center space-y-4"
-            variants={itemVariants}
-          >
-            {/* Legal Links */}
-            <div className="flex flex-wrap justify-center items-center gap-4 text-sm mb-4">
-              <button
-                onClick={() => setShowPrivacy(true)}
-                className="text-electric-blue hover:text-electric-blue/80 transition-colors underline underline-offset-4"
-              >
-                Privacy Policy
-              </button>
-              <span className="text-white/30">•</span>
-              <button
-                onClick={() => setShowTerms(true)}
-                className="text-electric-blue hover:text-electric-blue/80 transition-colors underline underline-offset-4"
-              >
-                Terms & Conditions
-              </button>
-            </div>
+          {/* Legal Links */}
+          <div className="flex flex-wrap justify-center items-center gap-4 text-sm mb-4">
+            <a
+              href="/privacy-policy.html"
+              className="text-electric-blue hover:text-electric-blue/80 transition-colors underline underline-offset-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </a>
+            <span className="text-white/30">•</span>
+            <a
+              href="/terms-and-conditions.html"
+              className="text-electric-blue hover:text-electric-blue/80 transition-colors underline underline-offset-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Terms & Conditions
+            </a>
+          </div>
 
-            {/* Copyright */}
-            <div className="text-sm text-white/70">
-              {(t?.footer?.copyright || "© {year} Nova Studio Solutions. All rights reserved.").replace('{year}', currentYear.toString())}
-            </div>
-          </motion.div>
+          {/* Copyright */}
+          <div className="text-sm text-white/70">
+            {(t?.footer?.copyright || "© {year} Nova Studio Solutions. All rights reserved.").replace('{year}', currentYear.toString())}
+          </div>
         </motion.div>
-      </footer>
-    </>
+      </motion.div>
+    </footer>
   )
 }
 
