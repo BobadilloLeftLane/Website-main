@@ -70,11 +70,15 @@ export const useTranslationProvider = () => {
     loadTranslation()
   }, [currentLanguage])
 
-  // Load saved language from localStorage on mount
+  // Load saved language from localStorage on mount, default to English if not set
   useEffect(() => {
     const savedLanguage = localStorage.getItem('user-language') as Language
     if (savedLanguage && translationLoaders[savedLanguage]) {
       setCurrentLanguage(savedLanguage)
+    } else {
+      // Explicitly set English as default for new users
+      setCurrentLanguage('en')
+      localStorage.setItem('user-language', 'en')
     }
   }, [])
 

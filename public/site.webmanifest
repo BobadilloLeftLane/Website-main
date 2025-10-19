@@ -1,7 +1,7 @@
 {
   "name": "Nova Studio",
   "short_name": "Nova Studio",
-  "description": "Tim od dva brata iz Novog Sada - Kreiranje digitalnih rešenja",
+  "description": "Professional software development agency - Digital transformation solutions",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
@@ -9,11 +9,27 @@
   "orientation": "portrait",
   "icons": [
     {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
       "src": "/nova-studio-logo.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
   "categories": ["development", "business", "productivity"],
-  "lang": "sr"
+  "lang": "en"
 }
