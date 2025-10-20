@@ -1,10 +1,8 @@
 <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Optimized Cyberpunk Planet Logo -->
+  <!-- Nova Studio Logo - Icon Only (Small Size) -->
+  <!-- Optimized for small displays: app icons, favicons, profile pictures -->
 
-  <!-- Background circle for better visibility -->
-  <circle cx="100" cy="100" r="95" fill="#020617" opacity="0.95"/>
-
-  <!-- Back parts of orbits (behind planet) -->
+  <!-- Back orbits -->
   <path
     d="M 55 88 A 55 12 0 0 1 145 112"
     fill="none"
@@ -23,13 +21,11 @@
     transform="rotate(25 100 100)"
   />
 
-  <!-- Blue Planet - main focal point -->
+  <!-- Planet -->
   <circle cx="100" cy="100" r="40" fill="#00D4FF" />
-
-  <!-- Inner glow effect -->
   <circle cx="100" cy="100" r="35" fill="#0099cc" opacity="0.3" />
 
-  <!-- Front parts of orbits (in front of planet) -->
+  <!-- Front orbits -->
   <path
     d="M 145 112 A 55 12 0 0 1 55 88"
     fill="none"
@@ -48,7 +44,7 @@
     transform="rotate(25 100 100)"
   />
 
-  <!-- Static white orbital dots for visual interest -->
+  <!-- Orbital dots -->
   <circle cx="145" cy="100" r="6" fill="#ffffff" transform="rotate(-25 100 100)" />
   <circle cx="150" cy="100" r="6" fill="#ffffff" transform="rotate(25 100 100)" />
 </svg>
