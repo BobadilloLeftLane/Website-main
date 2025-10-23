@@ -132,11 +132,11 @@ const HeroSection = () => {
         {/* Main Headlines with Cyberpunk Styling */}
         <motion.div className="mb-8">
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-space mb-4"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold font-hypik mb-4"
             variants={{
               hidden: { opacity: 0, scale: 0.8 },
-              visible: { 
-                opacity: 1, 
+              visible: {
+                opacity: 1,
                 scale: 1,
                 transition: { delay: 0.3, duration: 0.8 }
               }

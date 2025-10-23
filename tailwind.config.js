@@ -16,6 +16,7 @@ export default {
         'space': ['Space Grotesk', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
         'jetbrains': ['JetBrains Mono', 'monospace'],
+        'hypik': ['Hypik', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

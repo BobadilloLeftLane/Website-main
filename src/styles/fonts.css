@@ -100,6 +100,16 @@
        url('/fonts/inter-v20-latin_latin-ext-700.woff') format('woff');
 }
 
+/* Hypik Font Family */
+@font-face {
+  font-family: 'Hypik';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('/fonts/hypik.otf') format('opentype');
+}
+
 /* JetBrains Mono Font Family */
 @font-face {
   font-family: 'JetBrains Mono';
