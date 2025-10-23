@@ -149,53 +149,50 @@ const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
             >
               <span
-                className="bg-clip-text text-transparent animate-gradient inline-block"
+                className="bg-clip-text text-transparent inline-block"
                 style={{
                   backgroundImage: `
-                    linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                    linear-gradient(to right, rgb(249, 115, 22), rgb(255, 69, 0), rgb(220, 38, 38))
+                    repeating-linear-gradient(135deg, transparent, transparent 8px, rgba(255, 255, 255, 0.9) 8px, rgba(255, 255, 255, 0.9) 10px),
+                    linear-gradient(to right, rgb(255, 100, 0), rgb(255, 69, 0), rgb(220, 20, 20))
                   `,
-                  backgroundSize: '15px 15px, 15px 15px, 200% 200%',
+                  backgroundSize: '20px 20px, 200% 200%',
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
-                  animation: 'gridFloat 10s ease-in-out infinite, gradient 15s ease infinite'
+                  animation: 'laserSlide 8s linear infinite, gradient 15s ease infinite'
                 }}
               >
                 NOVA{' '}
               </span>
               <span
-                className="bg-clip-text text-transparent animate-gradient inline-block"
+                className="bg-clip-text text-transparent inline-block"
                 style={{
                   backgroundImage: `
-                    linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                    linear-gradient(to right, rgb(107, 142, 35), rgb(202, 138, 4), rgb(21, 128, 61))
+                    repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255, 255, 255, 0.9) 8px, rgba(255, 255, 255, 0.9) 10px),
+                    linear-gradient(to right, rgb(150, 200, 50), rgb(234, 179, 8), rgb(50, 180, 100))
                   `,
-                  backgroundSize: '15px 15px, 15px 15px, 200% 200%',
+                  backgroundSize: '20px 20px, 200% 200%',
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
-                  animation: 'gridFloat 10s ease-in-out infinite, gradient 15s ease infinite'
+                  animation: 'laserSlide 8s linear infinite reverse, gradient 15s ease infinite'
                 }}
               >
                 STUDIO
               </span>
             </motion.span>
             <motion.span
-              className="block bg-clip-text text-transparent animate-gradient inline-block"
+              className="block bg-clip-text text-transparent inline-block"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
               style={{
                 backgroundImage: `
-                  linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                  linear-gradient(to right, rgb(0, 212, 255), rgb(139, 92, 246), rgb(0, 255, 136))
+                  repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(255, 255, 255, 0.9) 8px, rgba(255, 255, 255, 0.9) 10px),
+                  linear-gradient(to right, rgb(0, 220, 255), rgb(150, 100, 255), rgb(0, 255, 150))
                 `,
-                backgroundSize: '15px 15px, 15px 15px, 200% 200%',
+                backgroundSize: '20px 20px, 200% 200%',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
-                animation: 'gridFloat 10s ease-in-out infinite, gradient 15s ease infinite'
+                animation: 'laserSlide 8s linear infinite, gradient 15s ease infinite'
               }}
             >
               SOLUTIONS

@@ -111,6 +111,48 @@ body {
       background-position: 30px 30px;
     }
   }
+
+  @keyframes laserSweep1 {
+    0%, 100% {
+      transform: translateX(-100%) rotate(-15deg);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(100%) rotate(-15deg);
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes laserSweep2 {
+    0%, 100% {
+      transform: translateX(-100%) rotate(10deg);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(100%) rotate(10deg);
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes laserSweep3 {
+    0%, 100% {
+      transform: translateX(100%) rotate(-20deg);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(-100%) rotate(-20deg);
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes laserSlide {
+    0% {
+      background-position: 0 0, left center;
+    }
+    100% {
+      background-position: 40px 40px, right center;
+    }
+  }
 }
 
 /* Component styles */
