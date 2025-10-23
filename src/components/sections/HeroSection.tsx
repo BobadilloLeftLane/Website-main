@@ -147,15 +147,6 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              style={{
-                textShadow: `
-                  0 0 10px rgba(255, 69, 0, 0.8),
-                  0 0 20px rgba(255, 140, 0, 0.6),
-                  0 0 30px rgba(255, 215, 0, 0.4),
-                  0 0 40px rgba(255, 69, 0, 0.3),
-                  5px 5px 15px rgba(0, 0, 0, 0.5)
-                `
-              }}
             >
               <span className="bg-gradient-to-r from-orange-500 via-orange-red to-red-600 bg-clip-text text-transparent animate-gradient">
                 NOVA{' '}
@@ -169,15 +160,6 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              style={{
-                textShadow: `
-                  0 0 10px rgba(0, 212, 255, 0.8),
-                  0 0 20px rgba(139, 92, 246, 0.6),
-                  0 0 30px rgba(0, 255, 136, 0.4),
-                  0 0 40px rgba(0, 212, 255, 0.3),
-                  5px 5px 15px rgba(0, 0, 0, 0.5)
-                `
-              }}
             >
               SOLUTIONS
             </motion.span>
