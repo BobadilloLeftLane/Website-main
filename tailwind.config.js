@@ -11,6 +11,8 @@ export default {
         'midnight': '#020617',
         'silver': '#E2E8F0',
         'gold': '#F59E0B',
+        'orange-red': '#FF4500',
+        'green-brown': '#6B8E23',
       },
       fontFamily: {
         'space': ['Space Grotesk', 'sans-serif'],
