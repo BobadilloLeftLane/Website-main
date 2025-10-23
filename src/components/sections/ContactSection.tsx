@@ -22,8 +22,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: t?.contact?.email?.label || "Email",
-      value: "novastudiosolutions@outlook.com",
-      href: "mailto:novastudiosolutions@outlook.com",
+      value: "nova-solutions@novastudiosolutions.com",
+      href: "mailto:nova-solutions@novastudiosolutions.com",
       description: t?.contact?.email?.description || "For all inquiries and collaboration"
     },
     {
