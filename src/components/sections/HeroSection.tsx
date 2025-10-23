@@ -148,18 +148,55 @@ const HeroSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              <span className="bg-gradient-to-r from-orange-500 via-orange-red to-red-600 bg-clip-text text-transparent animate-gradient">
+              <span
+                className="bg-clip-text text-transparent animate-gradient inline-block"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                    linear-gradient(to right, rgb(249, 115, 22), rgb(255, 69, 0), rgb(220, 38, 38))
+                  `,
+                  backgroundSize: '15px 15px, 15px 15px, 200% 200%',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  animation: 'gridFloat 10s ease-in-out infinite, gradient 15s ease infinite'
+                }}
+              >
                 NOVA{' '}
               </span>
-              <span className="bg-gradient-to-r from-green-brown via-yellow-600 to-green-700 bg-clip-text text-transparent animate-gradient">
+              <span
+                className="bg-clip-text text-transparent animate-gradient inline-block"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                    linear-gradient(to right, rgb(107, 142, 35), rgb(202, 138, 4), rgb(21, 128, 61))
+                  `,
+                  backgroundSize: '15px 15px, 15px 15px, 200% 200%',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  animation: 'gridFloat 10s ease-in-out infinite, gradient 15s ease infinite'
+                }}
+              >
                 STUDIO
               </span>
             </motion.span>
             <motion.span
-              className="block bg-gradient-to-r from-electric-blue via-cyber-purple to-neon-green bg-clip-text text-transparent animate-gradient"
+              className="block bg-clip-text text-transparent animate-gradient inline-block"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
+              style={{
+                backgroundImage: `
+                  linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                  linear-gradient(to right, rgb(0, 212, 255), rgb(139, 92, 246), rgb(0, 255, 136))
+                `,
+                backgroundSize: '15px 15px, 15px 15px, 200% 200%',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                animation: 'gridFloat 10s ease-in-out infinite, gradient 15s ease infinite'
+              }}
             >
               SOLUTIONS
             </motion.span>
