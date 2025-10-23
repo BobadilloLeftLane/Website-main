@@ -1,0 +1,16 @@
+# Nova Studio Solutions - Robots.txt
+# https://novastudio.dev
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private directories (if any in the future)
+Disallow: /api/
+Disallow: /.git/
+
+# Sitemap location
+Sitemap: https://novastudio.dev/sitemap.xml
+Sitemap: https://www.novastudiosolutions.com/sitemap.xml
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1

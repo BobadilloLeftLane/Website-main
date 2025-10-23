@@ -1,0 +1,55 @@
+<svg width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Apple Touch Icon - Cyberpunk Planet Logo -->
+  <!-- Optimized for iOS home screen -->
+
+  <!-- Solid background for iOS -->
+  <rect width="200" height="200" fill="#020617" rx="40"/>
+
+  <!-- Back parts of orbits (behind planet) -->
+  <path
+    d="M 55 88 A 55 12 0 0 1 145 112"
+    fill="none"
+    stroke="#00FF88"
+    stroke-width="5"
+    opacity="0.5"
+    transform="rotate(-25 100 100)"
+  />
+
+  <path
+    d="M 50 85 A 65 15 0 0 1 150 115"
+    fill="none"
+    stroke="#FFD700"
+    stroke-width="5"
+    opacity="0.5"
+    transform="rotate(25 100 100)"
+  />
+
+  <!-- Blue Planet - slightly larger for better visibility -->
+  <circle cx="100" cy="100" r="42" fill="#00D4FF" />
+
+  <!-- Inner glow -->
+  <circle cx="100" cy="100" r="37" fill="#0099cc" opacity="0.3" />
+
+  <!-- Front parts of orbits -->
+  <path
+    d="M 145 112 A 55 12 0 0 1 55 88"
+    fill="none"
+    stroke="#00FF88"
+    stroke-width="5"
+    opacity="0.9"
+    transform="rotate(-25 100 100)"
+  />
+
+  <path
+    d="M 150 115 A 65 15 0 0 1 50 85"
+    fill="none"
+    stroke="#FFD700"
+    stroke-width="5"
+    opacity="0.9"
+    transform="rotate(25 100 100)"
+  />
+
+  <!-- Orbital dots -->
+  <circle cx="145" cy="100" r="7" fill="#ffffff" transform="rotate(-25 100 100)" />
+  <circle cx="150" cy="100" r="7" fill="#ffffff" transform="rotate(25 100 100)" />
+</svg>
