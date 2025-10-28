@@ -67,36 +67,7 @@ const HeroSection = () => {
   ]
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Cyberpunk Planet Background */}
-      <div
-        className="fixed inset-0 z-0"
-        style={{
-          opacity: planetOpacity,
-          transition: 'opacity 0.3s ease-out'
-        }}
-      >
-        <Canvas
-          camera={{ position: [0, 0, 8], fov: 60 }}
-          style={{ background: 'transparent' }}
-        >
-          <Suspense fallback={null}>
-            <CyberpunkPlanet
-              size={2.0}
-              nodeCount={12}
-              interactive={false}
-            />
-          </Suspense>
-        </Canvas>
-      </div>
-
-      {/* Clean Grid Overlay */}
-      <div className="absolute inset-0 z-10 opacity-10">
-        <div className="w-full h-full grid-overlay" style={{
-          backgroundSize: '80px 80px'
-        }} />
-      </div>
-
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#000000' }}>
       {/* Main Content */}
       <motion.div
         className="hero-content relative z-20 text-center section-padding max-w-7xl mx-auto pt-56 md:pt-64"
