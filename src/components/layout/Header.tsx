@@ -80,7 +80,11 @@ const Header = () => {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 border-b-0 transition-all duration-300"
-      style={{ backgroundColor: 'transparent', backdropFilter: 'none' }}
+      style={{
+        backgroundColor: 'rgba(2, 6, 23, 0.8)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)'
+      }}
     >
       <div className="container-wide px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2 sm:py-3 lg:py-4">
