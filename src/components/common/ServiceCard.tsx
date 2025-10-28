@@ -7,6 +7,12 @@ import {
   Monitor
 } from 'lucide-react'
 import type { Service } from '@/types'
+import MobileAppIcon from '@/components/icons/MobileAppIcon'
+import DigitalTransformIcon from '@/components/icons/DigitalTransformIcon'
+import SaaSIcon from '@/components/icons/SaaSIcon'
+import WebIcon from '@/components/icons/WebIcon'
+import APIIcon from '@/components/icons/APIIcon'
+import CloudIcon from '@/components/icons/CloudIcon'
 
 interface ServiceCardProps {
   service: Service
@@ -121,19 +127,35 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
           {/* Icon */}
           <div style={{ marginBottom: '30px' }}>
             {service.icon === 'saas' ? (
-              <div
-                className="text-7xl font-bold font-space"
-                style={{ color: service.color }}
-              >
-                SaaS
-              </div>
+              <SaaSIcon
+                size={100}
+                color={service.color}
+              />
             ) : service.icon === 'web' ? (
-              <div
-                className="text-7xl font-bold font-space"
-                style={{ color: service.color }}
-              >
-                WWW
-              </div>
+              <WebIcon
+                size={100}
+                color={service.color}
+              />
+            ) : service.icon === 'mobile' ? (
+              <MobileAppIcon
+                size={100}
+                color={service.color}
+              />
+            ) : service.icon === 'transformation' ? (
+              <DigitalTransformIcon
+                size={100}
+                color={service.color}
+              />
+            ) : service.icon === 'api' ? (
+              <APIIcon
+                size={100}
+                color={service.color}
+              />
+            ) : service.icon === 'cloud' ? (
+              <CloudIcon
+                size={100}
+                color={service.color}
+              />
             ) : IconComponent ? (
               <IconComponent
                 size={100}

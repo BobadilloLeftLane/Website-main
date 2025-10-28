@@ -6,6 +6,7 @@ export const Globe = ({ className = "", config = {} }: { className?: string; con
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
+  const arcTime = useRef(0);
 
   const [{ r }, api] = useSpring(() => ({
     r: 0,
@@ -39,26 +40,35 @@ export const Globe = ({ className = "", config = {} }: { className?: string; con
       phi: 0,
       theta: 0.3,
       dark: 1,
-      diffuse: 3,
+      diffuse: 1.5,
       mapSamples: 16000,
-      mapBrightness: 1.2,
-      baseColor: [0.1, 0.1, 0.1],
+      mapBrightness: 6,
+      baseColor: [0.05, 0.05, 0.1],
       markerColor: [251 / 255, 100 / 255, 21 / 255],
-      glowColor: [0.1, 0.1, 0.1],
-      markers: [
-        { location: [45.2671, 19.8335], size: 0.08 }, // Novi Sad
-        { location: [40.7128, -74.006], size: 0.05 }, // New York
-        { location: [51.5074, -0.1278], size: 0.05 }, // London
-        { location: [35.6762, 139.6503], size: 0.05 }, // Tokyo
-      ],
+      glowColor: [0.0, 0.4, 0.3],
+      markers: [],
       onRender: (state) => {
         // Auto-rotation when not interacting
         if (!pointerInteracting.current) {
-          phi += 0.003;
+          phi += 0.005;
         }
         state.phi = phi + r.get();
         state.width = width * 2;
         state.height = width * 2;
+
+        // Animate arcs (meteors)
+        arcTime.current += 0.002;
+        const progress = (Math.sin(arcTime.current) + 1) / 2;
+
+        // Define animated arcs between cities
+        state.arcs = [
+          // From Novi Sad to other cities - orange meteors
+          { from: [45.2671, 19.8335], to: [40.7128, -74.006], color: [0.98, 0.45, 0.09], progress: progress },
+          { from: [45.2671, 19.8335], to: [51.5074, -0.1278], color: [0.0, 1.0, 0.53], progress: (progress + 0.2) % 1 },
+          { from: [45.2671, 19.8335], to: [35.6762, 139.6503], color: [0.98, 0.45, 0.09], progress: (progress + 0.4) % 1 },
+          { from: [40.7128, -74.006], to: [51.5074, -0.1278], color: [0.0, 0.8, 0.4], progress: (progress + 0.6) % 1 },
+          { from: [51.5074, -0.1278], to: [35.6762, 139.6503], color: [0.98, 0.45, 0.09], progress: (progress + 0.8) % 1 },
+        ];
       },
       ...config,
     });

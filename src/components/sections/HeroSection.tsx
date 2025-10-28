@@ -77,26 +77,13 @@ const HeroSection = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Globe Background */}
       <div
-        className="fixed inset-0 z-0 flex items-center justify-center"
+        className="fixed inset-0 z-0 flex items-center justify-center globe-container"
         style={{
           opacity: planetOpacity,
-          transition: 'opacity 0.3s ease-out',
-          transform: 'translateY(-30vh)'
+          transition: 'opacity 0.3s ease-out'
         }}
       >
-        <Globe
-          className="w-full h-full"
-          config={{
-            devicePixelRatio: 2,
-            dark: 1,
-            diffuse: 3,
-            mapSamples: 16000,
-            mapBrightness: 1.2,
-            baseColor: [0.1, 0.1, 0.1],
-            markerColor: [0.976, 0.451, 0.086], // Orange-red color
-            glowColor: [0.1, 0.1, 0.1],
-          }}
-        />
+        <Globe className="w-full h-full" />
       </div>
 
 
@@ -260,10 +247,44 @@ const HeroSection = () => {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
-        
+
         .animate-gradient {
           background-size: 200% 200%;
           animation: gradient 4s ease infinite;
+        }
+
+        /* Globe positioning - responsive */
+        /* Desktop - centered with title */
+        .globe-container {
+          transform: translateY(-20vh);
+        }
+
+        /* Large tablet */
+        @media (max-width: 1024px) {
+          .globe-container {
+            transform: translateY(-15vh);
+          }
+        }
+
+        /* Tablet - centered with Nova Studio Solutions */
+        @media (max-width: 768px) {
+          .globe-container {
+            transform: translateY(-12vh);
+          }
+        }
+
+        /* Mobile - centered with title */
+        @media (max-width: 480px) {
+          .globe-container {
+            transform: translateY(-10vh);
+          }
+        }
+
+        /* Small mobile */
+        @media (max-width: 375px) {
+          .globe-container {
+            transform: translateY(-8vh);
+          }
         }
       `}</style>
     </section>

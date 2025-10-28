@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Canvas } from '@react-three/fiber'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { Users } from 'lucide-react'
 import ParticleBackground from '@/components/3d/ParticleBackground'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -13,6 +13,67 @@ const AboutSection = () => {
     triggerOnce: true,
     threshold: 0.1
   })
+
+  const [displayedSubtitle, setDisplayedSubtitle] = useState('')
+  const [displayedVision1, setDisplayedVision1] = useState('')
+  const [displayedVision2, setDisplayedVision2] = useState('')
+
+  const subtitleText = t?.about?.subtitle || "We are new to the market, but with a clear vision - to make digitalization accessible to everyone. We guarantee quality, transparency and definitely the most affordable prices."
+
+  // Extract clean text from translation strings (remove HTML tags)
+  const getCleanText = (text: string) => {
+    if (!text) return ''
+    return text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ')
+  }
+
+  const vision1Text = t?.about?.vision?.paragraph1
+    ? getCleanText(t.about.vision.paragraph1)
+    : "We believe that every business, regardless of size, deserves access to the most modern digital tools. Our idea is simple - to enable everyone to have complete control over their software and businesses via phone or computer."
+
+  const vision2Text = t?.about?.vision?.paragraph2
+    ? getCleanText(t.about.vision.paragraph2)
+    : "This means more efficient work, better communication with clients and the ability to make smarter business decisions based on real data - all at prices that won't destroy your budget."
+
+  useEffect(() => {
+    if (!inView) return
+
+    // Reset when language changes
+    setDisplayedSubtitle('')
+    setDisplayedVision1('')
+    setDisplayedVision2('')
+
+    let i = 0
+    const typingInterval = setInterval(() => {
+      if (i <= subtitleText.length) {
+        setDisplayedSubtitle(subtitleText.substring(0, i))
+        i++
+      } else {
+        clearInterval(typingInterval)
+        // Start vision1 after subtitle completes
+        let j = 0
+        const vision1Interval = setInterval(() => {
+          if (j <= vision1Text.length) {
+            setDisplayedVision1(vision1Text.substring(0, j))
+            j++
+          } else {
+            clearInterval(vision1Interval)
+            // Start vision2 after vision1 completes
+            let k = 0
+            const vision2Interval = setInterval(() => {
+              if (k <= vision2Text.length) {
+                setDisplayedVision2(vision2Text.substring(0, k))
+                k++
+              } else {
+                clearInterval(vision2Interval)
+              }
+            }, 20)
+          }
+        }, 20)
+      }
+    }, 20)
+
+    return () => clearInterval(typingInterval)
+  }, [inView, subtitleText, vision1Text, vision2Text])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -78,8 +139,9 @@ const AboutSection = () => {
           <h2 className="section-title">
             {t?.about?.title || "New Generation Digital Transformation"}
           </h2>
-          <p className="section-subtitle">
-            {t?.about?.subtitle || "We are new to the market, but with a clear vision - to make digitalization accessible to everyone. We guarantee quality, transparency and definitely the most affordable prices."}
+          <p className="section-subtitle text-neon-green font-mono">
+            {displayedSubtitle}
+            {displayedSubtitle.length < subtitleText.length && <span className="animate-pulse">|</span>}
           </p>
         </motion.div>
 
@@ -91,36 +153,16 @@ const AboutSection = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants}>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              {t?.about?.vision?.title?.includes('span') ? (
-                <span dangerouslySetInnerHTML={{ __html: t.about.vision.title }} />
-              ) : (
-                <>Naša <span className="text-electric-blue">Vizija</span></>
-              )}
+            <h3 className="text-2xl md:text-3xl font-bold text-neon-green mb-6">
+              {t?.about?.vision?.title ? getCleanText(t.about.vision.title) : "Our Vision"}
             </h3>
-            <p className="text-silver/80 text-lg leading-relaxed mb-8">
-              {t?.about?.vision?.paragraph1?.includes('span') ? (
-                <span dangerouslySetInnerHTML={{ __html: t.about.vision.paragraph1 }} />
-              ) : (
-                <>
-                  Verujemo da svaki biznis, bez obzira na veličinu, zaslužuje pristup najmodernijim
-                  digitalnim alatima. Naša ideja je jednostavna - omogućiti svima da preko telefona
-                  ili kompjutera imaju <span className="text-neon-green font-semibold">potpunu kontrolu</span> nad
-                  svojim softverima i biznisima.
-                </>
-              )}
+            <p className="text-neon-green font-mono text-lg leading-relaxed mb-8">
+              {displayedVision1}
+              {displayedVision1.length < vision1Text.length && <span className="animate-pulse">|</span>}
             </p>
-            <p className="text-silver/80 text-lg leading-relaxed mb-8">
-              {t?.about?.vision?.paragraph2?.includes('span') ? (
-                <span dangerouslySetInnerHTML={{ __html: t.about.vision.paragraph2 }} />
-              ) : (
-                <>
-                  To znači <span className="text-electric-blue font-semibold">efikasniji rad</span>,
-                  bolju komunikaciju sa klijentima i mogućnost donošenja
-                  <span className="text-cyber-purple font-semibold"> pametnijih poslovnih odluka</span> baziranih
-                  na realnim podacima - sve to po cenama koje neće uništiti vaš budžet.
-                </>
-              )}
+            <p className="text-neon-green font-mono text-lg leading-relaxed mb-8">
+              {displayedVision2}
+              {displayedVision2.length < vision2Text.length && displayedVision1.length >= vision1Text.length && <span className="animate-pulse">|</span>}
             </p>
 
             {/* Key Points */}
