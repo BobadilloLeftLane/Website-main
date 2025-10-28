@@ -70,15 +70,49 @@ export const useTranslationProvider = () => {
     loadTranslation()
   }, [currentLanguage])
 
-  // Load saved language from localStorage on mount, default to English if not set
+  // Auto-detect browser language on first visit, default to English otherwise
   useEffect(() => {
     const savedLanguage = localStorage.getItem('user-language') as Language
+
     if (savedLanguage && translationLoaders[savedLanguage]) {
+      // User has manually selected a language before
       setCurrentLanguage(savedLanguage)
     } else {
-      // Explicitly set English as default for new users
-      setCurrentLanguage('en')
-      localStorage.setItem('user-language', 'en')
+      // First visit - auto-detect browser language
+      const browserLang = navigator.language.toLowerCase()
+
+      // Map browser language codes to supported languages
+      let detectedLang: Language = 'en' // Default to English
+
+      if (browserLang.startsWith('sr')) {
+        detectedLang = 'sr' // Serbian
+      } else if (browserLang.startsWith('de')) {
+        detectedLang = 'de' // German
+      } else if (browserLang.startsWith('fr')) {
+        detectedLang = 'fr' // French
+      } else if (browserLang.startsWith('es')) {
+        detectedLang = 'es' // Spanish
+      } else if (browserLang.startsWith('tr')) {
+        detectedLang = 'tr' // Turkish
+      } else if (browserLang.startsWith('el')) {
+        detectedLang = 'el' // Greek
+      } else if (browserLang.startsWith('nl')) {
+        detectedLang = 'nl' // Dutch
+      } else if (browserLang.startsWith('et')) {
+        detectedLang = 'et' // Estonian
+      } else if (browserLang.startsWith('sv')) {
+        detectedLang = 'sv' // Swedish
+      } else if (browserLang.startsWith('no') || browserLang.startsWith('nb') || browserLang.startsWith('nn')) {
+        detectedLang = 'no' // Norwegian
+      } else if (browserLang.startsWith('it')) {
+        detectedLang = 'it' // Italian
+      } else if (browserLang.startsWith('pt')) {
+        detectedLang = 'pt' // Portuguese
+      }
+
+      console.log(`🌍 Auto-detected language: ${detectedLang} (from browser: ${browserLang})`)
+      setCurrentLanguage(detectedLang)
+      localStorage.setItem('user-language', detectedLang)
     }
   }, [])
 
