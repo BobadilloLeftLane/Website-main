@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { HelmetProvider } from 'react-helmet-async'
 import Layout from '@/components/layout/Layout'
 import Homepage from '@/pages/Homepage'
 import TranslationProvider from '@/components/providers/TranslationProvider'
@@ -12,12 +13,14 @@ function App() {
   }, [])
 
   return (
-    <TranslationProvider>
-      <CookieConsent />
-      <Layout>
-        <Homepage />
-      </Layout>
-    </TranslationProvider>
+    <HelmetProvider>
+      <TranslationProvider>
+        <CookieConsent />
+        <Layout>
+          <Homepage />
+        </Layout>
+      </TranslationProvider>
+    </HelmetProvider>
   )
 }
 

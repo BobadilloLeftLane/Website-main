@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useInView } from 'react-intersection-observer'
+import PageSEO from '@/components/seo/PageSEO'
 
 interface FAQItem {
   question: string
@@ -43,7 +44,14 @@ const FAQSection = () => {
   }
 
   return (
-    <section id="faq" className="py-20 section-padding relative overflow-hidden">
+    <>
+      <PageSEO
+        title="FAQ | Frequently Asked Questions - Često Postavljana Pitanja"
+        description="Common questions about software development: pricing, timelines, support, technologies. How much does a website cost? What technologies do you use? Koliko košta izrada web sajta? Pitanja i odgovori o razvoju softvera."
+        keywords="software development faq, web development questions, pricing questions, koliko kosta web sajt, cena izrade aplikacije, software development cost, project timeline, technology stack, support options, pitanja i odgovori, cesto postavljana pitanja, software usluge, razvojna podrska"
+        canonicalUrl="https://www.novastudiosolutions.com/#faq"
+      />
+      <section id="faq" className="py-20 section-padding relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-blue/5 to-transparent" />
 
@@ -126,6 +134,7 @@ const FAQSection = () => {
         </motion.div>
       </div>
     </section>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useTranslation } from '@/hooks/useTranslation'
+import PageSEO from '@/components/seo/PageSEO'
 import {
   Mail,
   Lightbulb,
@@ -48,7 +49,14 @@ const ProcessSection = () => {
   }
 
   return (
-    <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
+    <>
+      <PageSEO
+        title="Our Development Process | 8 Step Transparent Workflow - Naš Proces"
+        description="Transparent 8-step development process: Free consultation, proposal, contract, development, launch, support. Fixed prices, clear timelines. Transparentan proces razvoja, od ideje do realizacije."
+        keywords="software development process, agile development, mvp development, project management, development workflow, software lifecycle, proces razvoja, kako radimo, razvojni proces, projekat od pocetka, konsultacije, ponuda, ugovor, podrska"
+        canonicalUrl="https://www.novastudiosolutions.com/#process"
+      />
+      <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyber-purple/5 rounded-full blur-3xl" />
@@ -228,6 +236,7 @@ const ProcessSection = () => {
 
       </div>
     </section>
+    </>
   )
 }
 

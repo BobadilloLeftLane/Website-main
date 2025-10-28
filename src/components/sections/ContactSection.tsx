@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import { useTranslation } from '@/hooks/useTranslation'
+import PageSEO from '@/components/seo/PageSEO'
 import {
   Mail,
   Clock,
@@ -54,7 +55,14 @@ const ContactSection = () => {
   }
 
   return (
-    <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
+    <>
+      <PageSEO
+        title="Contact Us | Free Consultation - Software Development - Kontakt"
+        description="Get in touch for free consultation. Email, phone, office in Novi Sad. Response within 24 hours. Start your project today. Besplatna konsultacija, kontaktirajte nas."
+        keywords="contact software developer, free consultation, novi sad contact, software development inquiry, get a quote, project inquiry, kontakt, besplatna konsultacija, kontaktirajte nas, zakazite sastanak, ponuda za projekat, email kontakt"
+        canonicalUrl="https://www.novastudiosolutions.com/#contact"
+      />
+      <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
       {/* Background Elements */}
       
       {/* 3D Background */}
@@ -158,6 +166,7 @@ const ContactSection = () => {
 
       </div>
     </section>
+    </>
   )
 }
 

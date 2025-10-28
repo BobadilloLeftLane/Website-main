@@ -6,6 +6,7 @@ import AnimatedButton from '@/components/common/AnimatedButton'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useThrottledScroll } from '@/utils/useThrottledScroll'
 import CyberpunkPlanet from '@/components/3d/CyberpunkPlanet'
+import PageSEO from '@/components/seo/PageSEO'
 
 const HeroSection = () => {
   const { t } = useTranslation()
@@ -67,7 +68,14 @@ const HeroSection = () => {
   ]
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <>
+      <PageSEO
+        title="Software Development Agency Novi Sad | Izrada Web Sajta i Aplikacija"
+        description="Nova Studio Solutions - Professional software development agency in Novi Sad, Serbia. SaaS platforms, web & mobile apps, MVP development. Affordable prices, fast delivery. Izrada web sajta i aplikacija po povoljnim cenama. Besplatna konsultacija."
+        keywords="software development novi sad, web development serbia, izrada web sajta, izrada aplikacija, saas development, mvp development, mobilne aplikacije, web sajt cena, koliko kosta web sajt, izrada web stranica, programiranje novi sad, software agency serbia, affordable web development, startup development, digitalizacija, react development, node.js, cloud solutions, api integration, digital transformation"
+        canonicalUrl="https://www.novastudiosolutions.com/"
+      />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Cyberpunk Planet Background */}
       <div
         className="fixed inset-0 z-0"
@@ -258,6 +266,7 @@ const HeroSection = () => {
         }
       `}</style>
     </section>
+    </>
   )
 }
 

@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import { Users } from 'lucide-react'
 import ParticleBackground from '@/components/3d/ParticleBackground'
 import { useTranslation } from '@/hooks/useTranslation'
+import PageSEO from '@/components/seo/PageSEO'
 
 const AboutSection = () => {
   const { t } = useTranslation()
@@ -31,7 +32,14 @@ const AboutSection = () => {
   }
 
   return (
-    <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
+    <>
+      <PageSEO
+        title="About Us | Software Development Team Novi Sad - O Nama"
+        description="Expert software development team in Novi Sad, Serbia. Young, innovative, and affordable. 100% transparency, 24/7 support, 50% lower prices. Tim za razvoj softvera, mladi i inovativni."
+        keywords="software development team, novi sad developers, serbia it company, software agency, development team, outsourcing serbia, o nama, nas tim, programeri novi sad, it kompanija srbija, softverska kuca, razvojna agencija"
+        canonicalUrl="https://www.novastudiosolutions.com/#about"
+      />
+      <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
       {/* Background Elements */}
       
       {/* 3D Background */}
@@ -144,6 +152,7 @@ const AboutSection = () => {
 
       </div>
     </section>
+    </>
   )
 }
 

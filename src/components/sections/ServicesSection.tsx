@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import ServiceCard from '@/components/common/ServiceCard'
 import { getServicesWithTranslations } from '@/data/services'
 import { useTranslation } from '@/hooks/useTranslation'
+import PageSEO from '@/components/seo/PageSEO'
 
 const ServicesSection = () => {
   const { t } = useTranslation()
@@ -32,7 +33,14 @@ const ServicesSection = () => {
   }
 
   return (
-    <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
+    <>
+      <PageSEO
+        title="Software Development Services | SaaS, Web, Mobile Apps - Usluge Razvoja"
+        description="Complete software development services: SaaS platforms, web applications, mobile apps, API integration, cloud solutions. Affordable prices, enterprise quality. Usluge razvoja softvera, izrada aplikacija i web sajta."
+        keywords="saas development, web development services, mobile app development, api integration, cloud solutions, digital transformation, software services, usluge razvoja, izrada saas aplikacija, web usluge, mobilne aplikacije, cloud hosting, enterprise software"
+        canonicalUrl="https://www.novastudiosolutions.com/#services"
+      />
+      <section className="py-20 lg:py-32 section-padding relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl" />
       
@@ -114,6 +122,7 @@ const ServicesSection = () => {
 
       </div>
     </section>
+    </>
   )
 }
 
