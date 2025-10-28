@@ -25,7 +25,7 @@ const Layout = ({ children }: LayoutProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-midnight text-white overflow-x-hidden flex flex-col">
+    <div className="min-h-screen text-white overflow-x-hidden flex flex-col" style={{ backgroundColor: '#000000' }}>
       <Header />
       
       <motion.main

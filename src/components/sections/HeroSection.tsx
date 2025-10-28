@@ -78,7 +78,7 @@ const HeroSection = () => {
       >
         <Canvas
           camera={{ position: [0, 0, 8], fov: 60 }}
-          style={{ background: 'transparent' }}
+          style={{ background: '#000000' }}
         >
           <Suspense fallback={null}>
             <CyberpunkPlanet
@@ -90,12 +90,6 @@ const HeroSection = () => {
         </Canvas>
       </div>
 
-      {/* Clean Grid Overlay */}
-      <div className="absolute inset-0 z-10 opacity-10">
-        <div className="w-full h-full grid-overlay" style={{
-          backgroundSize: '80px 80px'
-        }} />
-      </div>
 
       {/* Main Content */}
       <motion.div
