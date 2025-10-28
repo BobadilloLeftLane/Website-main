@@ -16,6 +16,19 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
+
+  // Detect if it's a touch device on mount
+  useState(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  })
+
+  // Handle card flip for both mouse and touch
+  const handleFlip = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsFlipped(prev => !prev)
+  }
 
   // Get appropriate icon based on service type
   const getServiceIcon = (iconType: string) => {
@@ -59,10 +72,20 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
     <motion.div
       className="flip-card-container"
       variants={cardVariants}
-      onHoverStart={() => setIsFlipped(true)}
-      onHoverEnd={() => setIsFlipped(false)}
-      onClick={onClick}
-      style={{ perspective: '1000px' }}
+      onHoverStart={() => !isTouchDevice && setIsFlipped(true)}
+      onHoverEnd={() => !isTouchDevice && setIsFlipped(false)}
+      onClick={(e) => {
+        if (isTouchDevice) {
+          handleFlip(e)
+        }
+        onClick?.()
+      }}
+      onTouchEnd={(e) => {
+        if (isTouchDevice) {
+          handleFlip(e)
+        }
+      }}
+      style={{ perspective: '1000px', WebkitTapHighlightColor: 'transparent' }}
     >
       <motion.div
         className="flip-card-content"
@@ -308,6 +331,26 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
           width: 100%;
           height: 400px;
           cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          touch-action: manipulation;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+          /* Touch devices - card stays flipped on tap */
+          .flip-card-container:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+          }
+        }
+
+        /* Ensure smooth transitions on all devices */
+        .flip-card-content {
+          transition: transform 0.6s ease-in-out;
         }
       `}</style>
     </motion.div>
