@@ -10,13 +10,10 @@ import LogoIcon from '@/components/common/LogoIcon'
 const Header = () => {
   const { t } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
 
   // Handle scroll effect and active section detection (throttled)
   const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 50)
-
     // Detect active section
     const sections = navigationSections.map(section => ({
       id: section.id,
