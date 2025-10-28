@@ -178,22 +178,24 @@ section {
 }
 
 :root.dark .hero-background {
-  background: #000000 !important;
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%) !important;
 }
 
-/* Grid overlay disabled */
+/* Grid overlay for light theme */
 :root.light .grid-overlay {
-  background-image: none;
+  background-image: 
+    linear-gradient(rgba(3, 105, 161, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(3, 105, 161, 0.15) 1px, transparent 1px);
 }
 
 :root.dark .grid-overlay {
-  background-image: none;
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.15) 1px, transparent 1px);
 }
 
-/* Remove text shadows and fix gradient text in both themes */
-:root.light *,
-:root.dark *,
-:root * {
+/* Remove text shadows and fix gradient text in light theme */
+:root.light * {
   text-shadow: none !important;
   filter: none !important;
 }
