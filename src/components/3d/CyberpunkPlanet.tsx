@@ -50,7 +50,7 @@ const CyberpunkPlanet = ({
         ringGroup.rotation.y = time * ring.speed * clickEffect
         ringGroup.rotation.x = Math.sin(time * 0.5 + ringIndex) * 0.3
         ringGroup.rotation.z = Math.cos(time * 0.3 + ringIndex) * 0.2
-        
+
         // Add blinking effect to each ring orientation within the group
         ringGroup.children.forEach((mesh, meshIndex) => {
           if ((mesh as THREE.Mesh).material) {
@@ -58,7 +58,7 @@ const CyberpunkPlanet = ({
             const baseOpacity = [0.3, 0.2, 0.18, 0.15, 0.12][meshIndex] || 0.2
             const blinkSpeed = 2 + meshIndex * 0.5 + ringIndex * 0.3
             const blinkOffset = meshIndex * 0.7 + ringIndex * 1.2
-            
+
             // Create pulsing/blinking effect
             const blinkIntensity = Math.sin(time * blinkSpeed + blinkOffset) * 0.5 + 0.5
             material.opacity = baseOpacity + (blinkIntensity * baseOpacity * 0.8)
@@ -74,26 +74,26 @@ const CyberpunkPlanet = ({
       const coreRadius = size * 0.6 // Orbit inside the main planet
       const verticalOrb = coreOrbsRef.current.children[0]
       const horizontalOrb = coreOrbsRef.current.children[1]
-      
+
       // Vertical orbiting sphere (YZ plane)
       const verticalSpeed = 1.5
       const verticalAngle = time * verticalSpeed
       verticalOrb.position.x = 0
       verticalOrb.position.y = Math.cos(verticalAngle) * coreRadius
       verticalOrb.position.z = Math.sin(verticalAngle) * coreRadius
-      
+
       // Add glowing effect
       if ((verticalOrb as THREE.Mesh).material) {
         ((verticalOrb as THREE.Mesh).material as THREE.MeshBasicMaterial).opacity = 0.8 + Math.sin(time * 4) * 0.3
       }
-      
+
       // Horizontal orbiting sphere (XZ plane)
       const horizontalSpeed = 1.2
       const horizontalAngle = time * horizontalSpeed
       horizontalOrb.position.x = Math.cos(horizontalAngle) * coreRadius
       horizontalOrb.position.y = 0
       horizontalOrb.position.z = Math.sin(horizontalAngle) * coreRadius
-      
+
       // Add glowing effect with different phase
       if ((horizontalOrb as THREE.Mesh).material) {
         ((horizontalOrb as THREE.Mesh).material as THREE.MeshBasicMaterial).opacity = 0.8 + Math.sin(time * 4 + Math.PI) * 0.3
@@ -106,7 +106,7 @@ const CyberpunkPlanet = ({
         // Different speeds for different layers
         const cloudSpeed = 0.05 + (index % 4) * 0.02
         cloudGroup.rotation.y = time * cloudSpeed * clickEffect
-        
+
         // Slight vertical bobbing for realism
         cloudGroup.position.y = Math.sin(time * 0.3 + index * 0.5) * 0.05
       })
@@ -122,7 +122,7 @@ const CyberpunkPlanet = ({
   return (
     <group>
       {/* Transparent Wireframe Planet */}
-      <mesh 
+      <mesh
         ref={planetRef}
       >
         <sphereGeometry args={[size, 32, 32]} />
@@ -165,57 +165,57 @@ const CyberpunkPlanet = ({
             {/* Horizontal rings (original) */}
             <mesh rotation={[Math.PI / 2, 0, 0]}>
               <ringGeometry args={[ring.radius * 0.97, ring.radius * 1.03, 128]} />
-              <meshBasicMaterial 
-                color={ring.color} 
-                transparent 
+              <meshBasicMaterial
+                color={ring.color}
+                transparent
                 opacity={0.3}
                 wireframe={true}
                 side={THREE.DoubleSide}
               />
             </mesh>
-            
+
             {/* Vertical rings */}
             <mesh rotation={[0, 0, 0]}>
               <ringGeometry args={[ring.radius * 0.98, ring.radius * 1.02, 96]} />
-              <meshBasicMaterial 
-                color={ring.color} 
-                transparent 
+              <meshBasicMaterial
+                color={ring.color}
+                transparent
                 opacity={0.2}
                 wireframe={true}
                 side={THREE.DoubleSide}
               />
             </mesh>
-            
+
             {/* Diagonal rings - 45 degrees */}
             <mesh rotation={[Math.PI / 4, Math.PI / 4, 0]}>
               <ringGeometry args={[ring.radius * 0.975, ring.radius * 1.025, 80]} />
-              <meshBasicMaterial 
-                color={ring.color} 
-                transparent 
+              <meshBasicMaterial
+                color={ring.color}
+                transparent
                 opacity={0.18}
                 wireframe={true}
                 side={THREE.DoubleSide}
               />
             </mesh>
-            
+
             {/* Diagonal rings - opposite direction */}
             <mesh rotation={[-Math.PI / 4, -Math.PI / 4, Math.PI / 3]}>
               <ringGeometry args={[ring.radius * 0.985, ring.radius * 1.015, 64]} />
-              <meshBasicMaterial 
-                color={ring.color} 
-                transparent 
+              <meshBasicMaterial
+                color={ring.color}
+                transparent
                 opacity={0.15}
                 wireframe={true}
                 side={THREE.DoubleSide}
               />
             </mesh>
-            
+
             {/* Additional angled ring */}
             <mesh rotation={[Math.PI / 3, 0, Math.PI / 6]}>
               <ringGeometry args={[ring.radius * 0.99, ring.radius * 1.01, 72]} />
-              <meshBasicMaterial 
-                color={ring.color} 
-                transparent 
+              <meshBasicMaterial
+                color={ring.color}
+                transparent
                 opacity={0.12}
                 wireframe={true}
                 side={THREE.DoubleSide}
@@ -239,7 +239,7 @@ const CyberpunkPlanet = ({
             opacity={0.9}
           />
         </mesh>
-        
+
         {/* Horizontal orbiting sphere */}
         <mesh>
           <sphereGeometry args={[0.08, 16, 16]} />

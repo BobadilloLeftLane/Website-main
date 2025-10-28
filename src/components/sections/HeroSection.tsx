@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
-import { Canvas } from '@react-three/fiber'
-import { Suspense, useState, useCallback } from 'react'
+import { useState, useCallback, Suspense } from 'react'
 import { ArrowRight, Star, Zap, Users } from 'lucide-react'
-import CyberpunkPlanet from '@/components/3d/CyberpunkPlanet'
+import { Canvas } from '@react-three/fiber'
 import AnimatedButton from '@/components/common/AnimatedButton'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useThrottledScroll } from '@/utils/useThrottledScroll'
+import CyberpunkPlanet from '@/components/3d/CyberpunkPlanet'
 
 const HeroSection = () => {
   const { t } = useTranslation()
@@ -68,47 +68,23 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Professional 3D Background */}
-      <div 
-        className="fixed inset-0 z-0" 
-        style={{ 
+      {/* 3D Cyberpunk Planet Background */}
+      <div
+        className="fixed inset-0 z-0"
+        style={{
           opacity: planetOpacity,
           transition: 'opacity 0.3s ease-out'
         }}
       >
-        <Canvas 
+        <Canvas
           camera={{ position: [0, 0, 8], fov: 60 }}
-          className="hero-background"
-          onCreated={() => console.log('🎯 CANVAS CREATED!')}
-          style={{ 
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100vh',
-            zIndex: -1,
-            pointerEvents: 'none'
-          }}
+          style={{ background: 'transparent' }}
         >
           <Suspense fallback={null}>
-            {/* Clean Minimal Planet */}
-            <CyberpunkPlanet 
+            <CyberpunkPlanet
               size={2.0}
               nodeCount={12}
               interactive={false}
-            />
-            
-            {/* Enhanced Lighting */}
-            <ambientLight intensity={0.3} color="#001a33" />
-            <directionalLight 
-              position={[10, 10, 5]} 
-              intensity={0.4}
-              color="#00D4FF"
-            />
-            <pointLight 
-              position={[-5, -5, 5]} 
-              intensity={0.2}
-              color="#8B5CF6"
             />
           </Suspense>
         </Canvas>

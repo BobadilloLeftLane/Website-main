@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import {
   Cloud,
   Code,
@@ -15,6 +15,8 @@ interface ServiceCardProps {
 }
 
 const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
+  const [isFlipped, setIsFlipped] = useState(false)
+
   // Get appropriate icon based on service type
   const getServiceIcon = (iconType: string) => {
     switch (iconType) {
@@ -36,165 +38,278 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
   }
 
   const IconComponent = getServiceIcon(service.icon)
+
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 20,
-      rotateX: -15 
+    hidden: {
+      opacity: 0,
+      y: 20
     },
     visible: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
       transition: {
         delay: index * 0.1,
         duration: 0.6,
         ease: "easeOut"
       }
-    },
-    hover: { 
-      scale: 1.03, 
-      rotateY: 2,
-      transition: { 
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    }
-  }
-
-  const iconVariants = {
-    hover: {
-      rotateY: 10,
-      scale: 1.1,
-      transition: { duration: 0.3 }
     }
   }
 
   return (
     <motion.div
-      className="relative p-6 rounded-xl glass-morphism group cursor-pointer overflow-hidden"
+      className="flip-card-container"
       variants={cardVariants}
-      whileHover="hover"
+      onHoverStart={() => setIsFlipped(true)}
+      onHoverEnd={() => setIsFlipped(false)}
       onClick={onClick}
+      style={{ perspective: '1000px' }}
     >
-      {/* Background gradient effect */}
       <motion.div
-        className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
+        className="flip-card-content"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         style={{
-          background: `linear-gradient(135deg, ${service.color}20, transparent)`
+          transformStyle: 'preserve-3d',
+          position: 'relative',
+          width: '100%',
+          height: '400px'
         }}
-      />
-
-      {/* Static Icon */}
-      <motion.div 
-        className="h-32 mb-6 relative flex items-center justify-center"
-        variants={iconVariants}
       >
-        <div className="relative">
-          {service.icon === 'saas' ? (
-            // SaaS text instead of icon
-            <div 
-              className="text-4xl font-bold font-space relative z-10"
-              style={{ color: service.color }}
-            >
-              SaaS
-            </div>
-          ) : service.icon === 'web' ? (
-            // WWW text instead of icon
-            <div 
-              className="text-4xl font-bold font-space relative z-10"
-              style={{ color: service.color }}
-            >
-              WWW
-            </div>
-          ) : IconComponent ? (
-            // Regular icon
-            <IconComponent 
-              size={64}
-              style={{ color: service.color }}
-              className="relative z-10"
-            />
-          ) : null}
-          
-          {/* Glow effect */}
+        {/* FRONT SIDE */}
+        <div
+          className="flip-card-front"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            backgroundColor: '#151515',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '40px'
+          }}
+        >
+          {/* Icon */}
+          <div style={{ marginBottom: '30px' }}>
+            {service.icon === 'saas' ? (
+              <div
+                className="text-7xl font-bold font-space"
+                style={{ color: service.color }}
+              >
+                SaaS
+              </div>
+            ) : service.icon === 'web' ? (
+              <div
+                className="text-7xl font-bold font-space"
+                style={{ color: service.color }}
+              >
+                WWW
+              </div>
+            ) : IconComponent ? (
+              <IconComponent
+                size={100}
+                style={{ color: service.color }}
+              />
+            ) : null}
+          </div>
+
+          {/* Title */}
+          <h3 style={{
+            fontSize: '24px',
+            fontWeight: '700',
+            color: '#fff',
+            textAlign: 'center',
+            lineHeight: '1.3'
+          }}>
+            {service.title}
+          </h3>
+        </div>
+
+        {/* BACK SIDE */}
+        <div
+          className="flip-card-back"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#151515'
+          }}
+        >
+          {/* Animated rotating gradient border */}
           <motion.div
-            className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+            className="rotating-border"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
             style={{
-              background: `radial-gradient(circle, ${service.color}40, transparent 70%)`,
-              filter: 'blur(20px)',
-              transform: 'scale(2)'
+              position: 'absolute',
+              content: ' ',
+              display: 'block',
+              width: '160px',
+              height: '160%',
+              background: `linear-gradient(90deg, transparent, ${service.color}, ${service.color}, ${service.color}, ${service.color}, transparent)`
             }}
           />
+
+          {/* Back content */}
+          <div className="back-content" style={{
+            position: 'absolute',
+            width: '99%',
+            height: '99%',
+            backgroundColor: '#151515',
+            borderRadius: '12px',
+            color: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            padding: '30px 25px',
+            overflow: 'hidden'
+          }}>
+            {/* Tagline/Description */}
+            <p style={{
+              color: 'rgba(255, 255, 255, 0.85)',
+              fontSize: '14px',
+              lineHeight: '1.6',
+              textAlign: 'center',
+              marginBottom: '20px'
+            }}>
+              {service.tagline}
+            </p>
+
+            {/* Features list */}
+            <ul style={{
+              width: '100%',
+              textAlign: 'left',
+              fontSize: '13px',
+              lineHeight: '1.7',
+              color: 'rgba(255, 255, 255, 0.8)',
+              marginBottom: '20px',
+              paddingLeft: '5px'
+            }}>
+              {service.features.slice(0, 5).map((feature, i) => (
+                <li
+                  key={i}
+                  style={{
+                    marginBottom: '10px',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '10px'
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: service.color,
+                      flexShrink: 0,
+                      marginTop: '6px'
+                    }}
+                  />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Technologies */}
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '8px',
+              justifyContent: 'center',
+              width: '100%'
+            }}>
+              {service.technologies.slice(0, 5).map((tech, i) => (
+                <span
+                  key={i}
+                  style={{
+                    padding: '5px 12px',
+                    fontSize: '11px',
+                    borderRadius: '5px',
+                    backgroundColor: `${service.color}20`,
+                    border: `1px solid ${service.color}40`,
+                    color: service.color,
+                    fontWeight: '500'
+                  }}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Floating circles */}
+            <motion.div
+              className="circle"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              style={{
+                width: '90px',
+                height: '90px',
+                borderRadius: '50%',
+                backgroundColor: `${service.color}66`,
+                position: 'absolute',
+                filter: 'blur(15px)',
+                bottom: '0px',
+                left: '50px',
+                zIndex: 0
+              }}
+            />
+            <motion.div
+              className="circle"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              style={{
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                backgroundColor: `${service.color}88`,
+                position: 'absolute',
+                filter: 'blur(15px)',
+                bottom: '0px',
+                left: '50px',
+                zIndex: 0
+              }}
+            />
+            <motion.div
+              className="circle"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
+              style={{
+                width: '30px',
+                height: '30px',
+                borderRadius: '50%',
+                backgroundColor: `${service.color}`,
+                position: 'absolute',
+                filter: 'blur(15px)',
+                top: '-80px',
+                right: '10px',
+                zIndex: 0
+              }}
+            />
+          </div>
         </div>
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10">
-        <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-electric-blue group-hover:to-cyber-purple group-hover:bg-clip-text transition-all duration-300">
-          {service.title}
-        </h3>
-        
-        <p className="text-silver/70 mb-4 text-sm leading-relaxed">
-          {service.tagline}
-        </p>
-
-        {/* Features list */}
-        <ul className="space-y-2 mb-6">
-          {service.features.slice(0, 4).map((feature, i) => (
-            <motion.li 
-              key={i} 
-              className="flex items-center text-sm text-silver/60"
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 + i * 0.05 }}
-            >
-              <motion.div 
-                className="w-1.5 h-1.5 rounded-full mr-3"
-                style={{ backgroundColor: service.color }}
-                whileHover={{ scale: 1.5 }}
-              />
-              {feature}
-            </motion.li>
-          ))}
-        </ul>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {service.technologies.slice(0, 3).map((tech, i) => (
-            <motion.span 
-              key={i}
-              className="px-2 py-1 text-xs rounded border transition-colors duration-200"
-              style={{ 
-                backgroundColor: `${service.color}10`,
-                borderColor: `${service.color}30`,
-                color: service.color
-              }}
-              whileHover={{ 
-                backgroundColor: `${service.color}20`,
-                scale: 1.05 
-              }}
-            >
-              {tech}
-            </motion.span>
-          ))}
-          {service.technologies.length > 3 && (
-            <span className="px-2 py-1 text-xs text-silver/40">
-              +{service.technologies.length - 3} more
-            </span>
-          )}
-        </div>
-
-      </div>
-
-      {/* Hover border effect */}
-      <motion.div
-        className="absolute inset-0 rounded-xl border-2 border-transparent pointer-events-none"
-        whileHover={{
-          borderColor: service.color,
-          boxShadow: `0 0 20px ${service.color}40`
-        }}
-        transition={{ duration: 0.3 }}
-      />
+      <style>{`
+        .flip-card-container {
+          width: 100%;
+          height: 400px;
+          cursor: pointer;
+        }
+      `}</style>
     </motion.div>
   )
 }
