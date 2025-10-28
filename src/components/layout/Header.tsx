@@ -45,19 +45,6 @@ const Header = () => {
     setIsMenuOpen(false)
   }
 
-  const headerVariants = {
-    top: {
-      backgroundColor: 'rgba(2, 6, 23, 0)',
-      backdropFilter: 'blur(0px)',
-      borderColor: 'rgba(255, 255, 255, 0)'
-    },
-    scrolled: {
-      backgroundColor: 'rgba(2, 6, 23, 0)',
-      backdropFilter: 'blur(0px)',
-      borderColor: 'rgba(255, 255, 255, 0)'
-    }
-  }
-
   const logoVariants = {
     hover: {
       scale: 1.05,
@@ -91,11 +78,9 @@ const Header = () => {
   }
 
   return (
-    <motion.header
+    <header
       className="fixed top-0 left-0 right-0 z-50 border-b-0 transition-all duration-300"
-      style={{ backgroundColor: 'transparent' }}
-      variants={headerVariants}
-      animate={isScrolled ? 'scrolled' : 'top'}
+      style={{ backgroundColor: 'transparent', backdropFilter: 'none' }}
     >
       <div className="container-wide px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2 sm:py-3 lg:py-4">
@@ -210,7 +195,7 @@ const Header = () => {
           )}
         </AnimatePresence>
       </div>
-    </motion.header>
+    </header>
   )
 }
 
