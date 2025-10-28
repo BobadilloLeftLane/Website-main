@@ -465,5 +465,45 @@ export const en = {
     confirm: "Confirm",
     save: "Save",
     close: "Close"
+  },
+  faq: {
+    title: "Frequently Asked Questions",
+    subtitle: "Everything you need to know about our software development services",
+    ctaText: "Still have questions?",
+    ctaButton: "Contact Us",
+    items: [
+      {
+        question: "How much does it cost to develop a web application?",
+        answer: "The price depends on the complexity of the project. Simple web applications start from €2,000-€5,000, while more complex SaaS platforms can cost €10,000-€50,000+. We always provide a detailed quote after the initial consultation. We offer transparent pricing with no hidden costs."
+      },
+      {
+        question: "How long does it take to develop an application?",
+        answer: "Development time varies based on project scope:\n\n• Simple landing page: 1-2 weeks\n• Business website: 2-4 weeks\n• Web application (MVP): 4-8 weeks\n• Complex SaaS platform: 3-6 months\n\nWe provide weekly updates and you can track progress in real-time through our project dashboard."
+      },
+      {
+        question: "Do you offer ongoing support and maintenance?",
+        answer: "Yes! We provide 30 days of free support after launch. After that, you can choose:\n\n• Monthly maintenance package (€200-€500/month)\n• Pay-as-you-go hourly support\n• Full takeover - we transfer everything to you\n\nAll maintenance packages include hosting, backups, security updates, and technical support."
+      },
+      {
+        question: "What technologies do you use?",
+        answer: "We use modern, industry-standard technologies:\n\n• Frontend: React, TypeScript, Next.js, Tailwind CSS\n• Backend: Node.js, Python, PostgreSQL, MongoDB\n• Cloud: AWS, Google Cloud, Vercel\n• Mobile: React Native (iOS & Android)\n\nWe choose the best tech stack based on your specific project requirements."
+      },
+      {
+        question: "Can you help with an existing project?",
+        answer: "Absolutely! We can help with:\n\n• Bug fixes and improvements\n• Adding new features\n• Performance optimization\n• Code refactoring and modernization\n• Migration to new technologies\n• Technical consulting\n\nWe'll review your current codebase and provide recommendations within 2-3 days."
+      },
+      {
+        question: "Do you work with startups?",
+        answer: "Yes, we love working with startups! We offer:\n\n• MVP development at affordable prices\n• Flexible payment terms\n• Technical co-founder consulting\n• Startup-friendly pricing packages\n• Scalable architecture from day one\n\nWe understand the startup challenges and work with your budget and timeline."
+      },
+      {
+        question: "What is your payment structure?",
+        answer: "Our typical payment structure:\n\n• 30-50% upfront payment (to start development)\n• 30-40% milestone payment (after MVP/beta)\n• 20-30% final payment (after launch and approval)\n\nFor smaller projects (under €5,000), we may request 50% upfront. We're flexible and can discuss payment terms that work for your budget."
+      },
+      {
+        question: "Do I own the source code?",
+        answer: "Yes! Upon final payment, you receive:\n\n• Complete source code ownership\n• All design files and assets\n• Full documentation\n• Deployment credentials\n• Database access\n\nYou have complete control and can host it anywhere you want. We can also provide ongoing maintenance if needed."
+      }
+    ]
   }
 }

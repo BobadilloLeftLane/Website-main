@@ -465,5 +465,45 @@ export const sr = {
     confirm: "Potvrdi",
     save: "Sačuvaj",
     close: "Zatvori"
+  },
+  faq: {
+    title: "Često Postavljana Pitanja",
+    subtitle: "Sve što treba da znate o našim uslugama razvoja softvera",
+    ctaText: "Još uvek imate pitanja?",
+    ctaButton: "Kontaktirajte Nas",
+    items: [
+      {
+        question: "Koliko košta izrada web aplikacije?",
+        answer: "Cena zavisi od složenosti projekta. Jednostavne web aplikacije počinju od €2,000-€5,000, dok složenije SaaS platforme mogu koštati €10,000-€50,000+. Uvek dajemo detaljnu ponudu nakon početne konsultacije. Nudimo transparentne cene bez skrivenih troškova."
+      },
+      {
+        question: "Koliko vremena traje izrada aplikacije?",
+        answer: "Vreme razvoja zavisi od obima projekta:\n\n• Jednostavna landing stranica: 1-2 nedelje\n• Poslovni websajt: 2-4 nedelje\n• Web aplikacija (MVP): 4-8 nedelja\n• Složena SaaS platforma: 3-6 meseci\n\nDajemo nedeljne update-ove i možete pratiti napredak u realnom vremenu kroz naš project dashboard."
+      },
+      {
+        question: "Da li nudite podršku i održavanje?",
+        answer: "Da! Nudimo 30 dana besplatne podrške nakon lansiranja. Nakon toga možete izabrati:\n\n• Mesečni maintenance paket (€200-€500/mesec)\n• Pay-as-you-go hourly support\n• Potpuno preuzimanje - prenosimo sve na vas\n\nSvi maintenance paketi uključuju hosting, backup-e, security update-e i tehničku podršku."
+      },
+      {
+        question: "Koje tehnologije koristite?",
+        answer: "Koristimo moderne, industrijske standardne tehnologije:\n\n• Frontend: React, TypeScript, Next.js, Tailwind CSS\n• Backend: Node.js, Python, PostgreSQL, MongoDB\n• Cloud: AWS, Google Cloud, Vercel\n• Mobile: React Native (iOS & Android)\n\nBiramo najbolji tech stack na osnovu specifičnih potreba vašeg projekta."
+      },
+      {
+        question: "Možete li pomoći sa postojećim projektom?",
+        answer: "Apsolutno! Možemo pomoći sa:\n\n• Bug fixes i poboljšanjima\n• Dodavanjem novih funkcija\n• Optimizacijom performansi\n• Refaktoringom i modernizacijom koda\n• Migracijom na nove tehnologije\n• Tehničkim konsaltingom\n\nPregledat ćemo vaš trenutni codebase i dati preporuke u roku od 2-3 dana."
+      },
+      {
+        question: "Da li radite sa startapima?",
+        answer: "Da, volimo da radimo sa startapima! Nudimo:\n\n• MVP razvoj po pristupačnim cenama\n• Fleksibilne uslove plaćanja\n• Technical co-founder konsalting\n• Startup-friendly pakete cena\n• Skalabilnu arhitekturu od prvog dana\n\nRazumemo izazove startapa i radimo sa vašim budžetom i rokovima."
+      },
+      {
+        question: "Kako izgleda struktura plaćanja?",
+        answer: "Naša tipična struktura plaćanja:\n\n• 30-50% avansno plaćanje (za početak razvoja)\n• 30-40% milestone plaćanje (nakon MVP/beta)\n• 20-30% finalno plaćanje (nakon lansiranja i odobrenja)\n\nZa manje projekte (ispod €5,000), možemo tražiti 50% avans. Fleksibilni smo i možemo razgovarati o uslovima plaćanja koji odgovaraju vašem budžetu."
+      },
+      {
+        question: "Da li posedujem source code?",
+        answer: "Da! Nakon finalnog plaćanja, dobijate:\n\n• Kompletno vlasništvo nad source code-om\n• Sve dizajn fajlove i assets\n• Punu dokumentaciju\n• Deployment credentials\n• Pristup bazi podataka\n\nImate potpunu kontrolu i možete hostovati gde god želite. Takođe možemo pružiti kontinuirano održavanje po potrebi."
+      }
+    ]
   }
 }

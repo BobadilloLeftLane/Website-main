@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import ServicesSection from '@/components/sections/ServicesSection'
 import ProcessSection from '@/components/sections/ProcessSection'
 import AboutSection from '@/components/sections/AboutSection'
+import FAQSection from '@/components/sections/FAQSection'
 
 // Lazy load sections with 3D components
 const HeroSection = lazy(() => import('@/components/sections/HeroSection'))
@@ -33,6 +34,10 @@ const Homepage = () => {
 
       <section id="about">
         <AboutSection />
+      </section>
+
+      <section id="faq">
+        <FAQSection />
       </section>
 
       <section id="contact">
