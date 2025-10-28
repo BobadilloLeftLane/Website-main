@@ -109,7 +109,7 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
             WebkitBackfaceVisibility: 'hidden',
             borderRadius: '12px',
             overflow: 'hidden',
-            backgroundColor: '#151515',
+            backgroundColor: '#000000',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -168,7 +168,7 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#151515'
+            backgroundColor: '#000000'
           }}
         >
           {/* Animated rotating gradient border */}
@@ -191,7 +191,7 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
             position: 'absolute',
             width: '99%',
             height: '99%',
-            backgroundColor: '#151515',
+            backgroundColor: '#000000',
             borderRadius: '12px',
             color: 'white',
             display: 'flex',
