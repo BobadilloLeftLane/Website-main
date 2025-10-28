@@ -34,5 +34,6 @@ export const navigationSections = [
   { id: 'services', key: 'nav.services' },
   { id: 'process', key: 'nav.process' },
   { id: 'about', key: 'nav.about' },
+  { id: 'faq', key: 'nav.faq' },
   { id: 'contact', key: 'nav.contact' }
 ]

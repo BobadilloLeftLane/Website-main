@@ -52,8 +52,6 @@ const FAQSection = () => {
         canonicalUrl="https://www.novastudiosolutions.com/#faq"
       />
       <section id="faq" className="py-20 section-padding relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-blue/5 to-transparent" />
 
       <div className="container-wide relative z-10">
         <motion.div

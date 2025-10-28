@@ -1,16 +1,87 @@
-# Nova Studio Solutions - Robots.txt
-# https://novastudio.dev
+# Nova Studio Solutions - Robots Configuration
+# Website: https://www.novastudiosolutions.com
+# Software Development Agency - Novi Sad, Serbia
 
+# Allow all good bots
 User-agent: *
 Allow: /
-
-# Disallow admin and private directories (if any in the future)
 Disallow: /api/
-Disallow: /.git/
+Disallow: /admin/
+Disallow: /*.json$
 
-# Sitemap location
-Sitemap: https://novastudio.dev/sitemap.xml
-Sitemap: https://www.novastudiosolutions.com/sitemap.xml
+# Google bots - full access
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
-# Crawl-delay (optional, helps with server load)
+User-agent: Googlebot-Image
+Allow: /logos/
+Allow: /og-image.png
+Allow: /favicon
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bing bot
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1
+
+# Yahoo bot
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Yandex bot
+User-agent: Yandex
+Allow: /
+
+# DuckDuckGo bot
+User-agent: DuckDuckBot
+Allow: /
+
+# Facebook bot (for OG tags)
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter bot (for card tags)
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn bot
+User-agent: LinkedInBot
+Allow: /
+
+# Block AI scrapers and data harvesters
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://www.novastudiosolutions.com/sitemap.xml

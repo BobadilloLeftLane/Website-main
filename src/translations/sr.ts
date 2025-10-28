@@ -4,6 +4,7 @@ export const sr = {
     services: "Usluge",
     process: "Proces",
     about: "O nama",
+    faq: "Česta Pitanja",
     contact: "Kontakt"
   },
   hero: {
@@ -474,7 +475,7 @@ export const sr = {
     items: [
       {
         question: "Koliko košta izrada web aplikacije?",
-        answer: "Cena zavisi od složenosti projekta. Jednostavne web aplikacije počinju od €2,000-€5,000, dok složenije SaaS platforme mogu koštati €10,000-€50,000+. Uvek dajemo detaljnu ponudu nakon početne konsultacije. Nudimo transparentne cene bez skrivenih troškova."
+        answer: "Cena zavisi od složenosti projekta i specifičnih potreba vašeg biznisa. Uvek dajemo detaljnu ponudu nakon početne konsultacije. Nudimo transparentne cene bez skrivenih troškova i fleksibilne uslove plaćanja."
       },
       {
         question: "Koliko vremena traje izrada aplikacije?",
@@ -482,7 +483,7 @@ export const sr = {
       },
       {
         question: "Da li nudite podršku i održavanje?",
-        answer: "Da! Nudimo 30 dana besplatne podrške nakon lansiranja. Nakon toga možete izabrati:\n\n• Mesečni maintenance paket (€200-€500/mesec)\n• Pay-as-you-go hourly support\n• Potpuno preuzimanje - prenosimo sve na vas\n\nSvi maintenance paketi uključuju hosting, backup-e, security update-e i tehničku podršku."
+        answer: "Da! Nudimo 30 dana besplatne podrške nakon lansiranja. Nakon toga možete izabrati:\n\n• Mesečni maintenance paket prilagođen vašim potrebama\n• Pay-as-you-go hourly support\n• Potpuno preuzimanje - prenosimo sve na vas\n\nSvi maintenance paketi uključuju hosting, backup-e, security update-e i tehničku podršku."
       },
       {
         question: "Koje tehnologije koristite?",
@@ -498,7 +499,7 @@ export const sr = {
       },
       {
         question: "Kako izgleda struktura plaćanja?",
-        answer: "Naša tipična struktura plaćanja:\n\n• 30-50% avansno plaćanje (za početak razvoja)\n• 30-40% milestone plaćanje (nakon MVP/beta)\n• 20-30% finalno plaćanje (nakon lansiranja i odobrenja)\n\nZa manje projekte (ispod €5,000), možemo tražiti 50% avans. Fleksibilni smo i možemo razgovarati o uslovima plaćanja koji odgovaraju vašem budžetu."
+        answer: "Naša tipična struktura plaćanja:\n\n• Avansno plaćanje (za početak razvoja)\n• Milestone plaćanje (nakon MVP/beta)\n• Finalno plaćanje (nakon lansiranja i odobrenja)\n\nFleksibilni smo i možemo razgovarati o uslovima plaćanja koji odgovaraju vašem budžetu i potrebama projekta."
       },
       {
         question: "Da li posedujem source code?",

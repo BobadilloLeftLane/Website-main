@@ -4,6 +4,7 @@ export const en = {
     services: "Services",
     process: "Process",
     about: "About",
+    faq: "FAQ",
     contact: "Contact"
   },
   hero: {
@@ -474,7 +475,7 @@ export const en = {
     items: [
       {
         question: "How much does it cost to develop a web application?",
-        answer: "The price depends on the complexity of the project. Simple web applications start from €2,000-€5,000, while more complex SaaS platforms can cost €10,000-€50,000+. We always provide a detailed quote after the initial consultation. We offer transparent pricing with no hidden costs."
+        answer: "The price depends on the complexity of the project and your specific business needs. We always provide a detailed quote after the initial consultation. We offer transparent pricing with no hidden costs and flexible payment terms."
       },
       {
         question: "How long does it take to develop an application?",
@@ -482,7 +483,7 @@ export const en = {
       },
       {
         question: "Do you offer ongoing support and maintenance?",
-        answer: "Yes! We provide 30 days of free support after launch. After that, you can choose:\n\n• Monthly maintenance package (€200-€500/month)\n• Pay-as-you-go hourly support\n• Full takeover - we transfer everything to you\n\nAll maintenance packages include hosting, backups, security updates, and technical support."
+        answer: "Yes! We provide 30 days of free support after launch. After that, you can choose:\n\n• Monthly maintenance package tailored to your needs\n• Pay-as-you-go hourly support\n• Full takeover - we transfer everything to you\n\nAll maintenance packages include hosting, backups, security updates, and technical support."
       },
       {
         question: "What technologies do you use?",
@@ -498,7 +499,7 @@ export const en = {
       },
       {
         question: "What is your payment structure?",
-        answer: "Our typical payment structure:\n\n• 30-50% upfront payment (to start development)\n• 30-40% milestone payment (after MVP/beta)\n• 20-30% final payment (after launch and approval)\n\nFor smaller projects (under €5,000), we may request 50% upfront. We're flexible and can discuss payment terms that work for your budget."
+        answer: "Our typical payment structure:\n\n• Upfront payment (to start development)\n• Milestone payment (after MVP/beta)\n• Final payment (after launch and approval)\n\nWe're flexible and can discuss payment terms that work for your budget and project requirements."
       },
       {
         question: "Do I own the source code?",

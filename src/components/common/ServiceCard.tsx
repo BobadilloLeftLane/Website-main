@@ -227,21 +227,9 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
                   key={i}
                   style={{
                     marginBottom: '10px',
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '10px'
+                    paddingLeft: '0px'
                   }}
                 >
-                  <span
-                    style={{
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '50%',
-                      backgroundColor: service.color,
-                      flexShrink: 0,
-                      marginTop: '6px'
-                    }}
-                  />
                   <span>{feature}</span>
                 </li>
               ))}
@@ -272,56 +260,6 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
                 </span>
               ))}
             </div>
-
-            {/* Floating circles */}
-            <motion.div
-              className="circle"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-              style={{
-                width: '90px',
-                height: '90px',
-                borderRadius: '50%',
-                backgroundColor: `${service.color}66`,
-                position: 'absolute',
-                filter: 'blur(15px)',
-                bottom: '0px',
-                left: '50px',
-                zIndex: 0
-              }}
-            />
-            <motion.div
-              className="circle"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              style={{
-                width: '150px',
-                height: '150px',
-                borderRadius: '50%',
-                backgroundColor: `${service.color}88`,
-                position: 'absolute',
-                filter: 'blur(15px)',
-                bottom: '0px',
-                left: '50px',
-                zIndex: 0
-              }}
-            />
-            <motion.div
-              className="circle"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
-              style={{
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                backgroundColor: `${service.color}`,
-                position: 'absolute',
-                filter: 'blur(15px)',
-                top: '-80px',
-                right: '10px',
-                zIndex: 0
-              }}
-            />
           </div>
         </div>
       </motion.div>
