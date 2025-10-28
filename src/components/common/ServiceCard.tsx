@@ -114,7 +114,8 @@ const ServiceCard = ({ service, index, onClick }: ServiceCardProps) => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '40px'
+            padding: '40px',
+            boxShadow: '0 10px 40px rgba(226, 232, 240, 0.1)'
           }}
         >
           {/* Icon */}

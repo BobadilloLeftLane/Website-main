@@ -62,7 +62,7 @@ const FAQSection = () => {
         >
           {/* Section Header */}
           <motion.div className="text-center mb-16" variants={itemVariants}>
-            <h2 className="text-4xl md:text-5xl font-bold font-space mb-4 bg-gradient-to-r from-electric-blue via-cyber-purple to-neon-green bg-clip-text text-transparent">
+            <h2 className="section-title">
               {t.faq?.title || "Frequently Asked Questions"}
             </h2>
             <p className="text-xl text-theme-secondary max-w-3xl mx-auto">
@@ -122,7 +122,7 @@ const FAQSection = () => {
             </p>
             <motion.button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-3 bg-gradient-to-r from-electric-blue to-cyber-purple text-white font-semibold rounded-lg"
+              className="px-8 py-3 bg-gradient-to-r from-orange-500 via-orange-red to-red-600 text-white font-semibold rounded-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -28,9 +28,9 @@ const AnimatedButton = ({
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-300 ease-out transform focus-visible:focus disabled:opacity-50 disabled:cursor-not-allowed'
   
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-electric-blue to-cyber-purple text-white shadow-lg hover:shadow-xl hover:shadow-electric-blue/25',
-    secondary: 'bg-transparent border-2 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-midnight',
-    ghost: 'text-silver hover:text-electric-blue bg-transparent'
+    primary: 'bg-gradient-to-r from-orange-500 via-orange-red to-red-600 text-white shadow-lg hover:shadow-xl hover:shadow-orange-500/25',
+    secondary: 'bg-transparent border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white',
+    ghost: 'text-silver hover:text-orange-500 bg-transparent'
   }
   
   const sizeClasses = {
@@ -42,7 +42,7 @@ const AnimatedButton = ({
   const hoverVariants = {
     hover: {
       scale: disabled ? 1 : 1.05,
-      boxShadow: variant === 'primary' ? '0 0 30px rgba(0, 212, 255, 0.5)' : undefined,
+      boxShadow: variant === 'primary' ? '0 0 30px rgba(249, 115, 22, 0.5)' : undefined,
       transition: { duration: 0.2 }
     },
     tap: {
@@ -75,7 +75,7 @@ const AnimatedButton = ({
       
       {variant === 'primary' && !loading && (
         <motion.div
-          className="absolute inset-0 rounded-lg bg-gradient-to-r from-electric-blue to-cyber-purple opacity-0"
+          className="absolute inset-0 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 opacity-0"
           whileHover={{ opacity: 0.1 }}
           transition={{ duration: 0.3 }}
         />

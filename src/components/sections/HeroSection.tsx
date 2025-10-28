@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
-import { useState, useCallback, Suspense } from 'react'
+import { useState, useCallback } from 'react'
 import { ArrowRight, Star, Zap, Users } from 'lucide-react'
-import { Canvas } from '@react-three/fiber'
 import AnimatedButton from '@/components/common/AnimatedButton'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useThrottledScroll } from '@/utils/useThrottledScroll'
-import CyberpunkPlanet from '@/components/3d/CyberpunkPlanet'
+import { Globe } from '@/components/ui/Globe'
 import PageSEO from '@/components/seo/PageSEO'
 
 const HeroSection = () => {
@@ -76,26 +75,28 @@ const HeroSection = () => {
         canonicalUrl="https://www.novastudiosolutions.com/"
       />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Cyberpunk Planet Background */}
+      {/* 3D Globe Background */}
       <div
-        className="fixed inset-0 z-0"
+        className="fixed inset-0 z-0 flex items-center justify-center"
         style={{
           opacity: planetOpacity,
-          transition: 'opacity 0.3s ease-out'
+          transition: 'opacity 0.3s ease-out',
+          transform: 'translateY(-30vh)'
         }}
       >
-        <Canvas
-          camera={{ position: [0, 0, 8], fov: 60 }}
-          style={{ background: '#000000' }}
-        >
-          <Suspense fallback={null}>
-            <CyberpunkPlanet
-              size={2.0}
-              nodeCount={12}
-              interactive={false}
-            />
-          </Suspense>
-        </Canvas>
+        <Globe
+          className="w-full h-full"
+          config={{
+            devicePixelRatio: 2,
+            dark: 1,
+            diffuse: 3,
+            mapSamples: 16000,
+            mapBrightness: 1.2,
+            baseColor: [0.1, 0.1, 0.1],
+            markerColor: [0.976, 0.451, 0.086], // Orange-red color
+            glowColor: [0.1, 0.1, 0.1],
+          }}
+        />
       </div>
 
 

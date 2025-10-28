@@ -36,7 +36,7 @@ const ScrollToTop = () => {
     },
     hover: {
       scale: 1.1,
-      boxShadow: "0 0 20px rgba(0, 212, 255, 0.5)",
+      boxShadow: "0 0 20px rgba(249, 115, 22, 0.5)",
       transition: {
         duration: 0.2
       }
@@ -50,7 +50,7 @@ const ScrollToTop = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-gradient-to-r from-electric-blue to-cyber-purple text-white shadow-lg"
+          className="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-red to-red-600 text-white shadow-lg"
           variants={buttonVariants}
           initial="hidden"
           animate="visible"
