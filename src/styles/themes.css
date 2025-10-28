@@ -34,12 +34,12 @@
 /* Dark Theme Variables (default) */
 :root,
 :root.dark {
-  /* Backgrounds - Very dark for contrast */
+  /* Backgrounds - Pure black */
   --bg-primary: #000000;
-  --bg-secondary: #0f0f0f;
-  --bg-tertiary: #1a1a1a;
-  --bg-glass: rgba(5, 5, 5, 0.9);
-  --bg-card: rgba(10, 10, 10, 0.95);
+  --bg-secondary: #000000;
+  --bg-tertiary: #000000;
+  --bg-glass: rgba(0, 0, 0, 0.95);
+  --bg-card: rgba(0, 0, 0, 0.95);
   
   /* Text Colors - Pure white for maximum contrast */
   --text-primary: #ffffff;
