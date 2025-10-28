@@ -76,10 +76,10 @@ body {
   background-color: var(--bg-primary);
 }
 
-/* Dark theme gets transparent background to show planet */
+/* Dark theme gets black background */
 :root.dark body,
 :root body {
-  background-color: transparent;
+  background-color: #000000;
 }
 
 /* Make sections transparent in both themes to show planet */
