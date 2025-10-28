@@ -5,7 +5,6 @@ import { scrollToSection, navigationSections } from '@/utils/smoothScroll'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useThrottledScroll } from '@/utils/useThrottledScroll'
 import LanguageSelector from '@/components/common/LanguageSelector'
-import ThemeToggle from '@/components/common/ThemeToggle'
 import LogoIcon from '@/components/common/LogoIcon'
 
 const Header = () => {
@@ -142,9 +141,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Language and Theme Controls - Always Visible */}
+          {/* Language Controls - Always Visible */}
           <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-            <ThemeToggle />
             <LanguageSelector />
 
             {/* Mobile Menu Button */}
