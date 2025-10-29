@@ -27,13 +27,34 @@ export default defineConfig({
     },
   },
   build: {
+    target: 'es2020',
+    minify: 'esbuild',
+    sourcemap: false,
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1000,
+    assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom'],
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          vendor: ['react', 'react-dom', 'react-helmet-async'],
+          three: ['three', '@react-three/fiber', '@react-three/drei', 'cobe'],
           animations: ['framer-motion'],
+          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
+          utils: ['lucide-react', 'clsx', 'tailwind-merge'],
         },
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name?.split('.')
+          let extType = info?.[info.length - 1]
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType ?? '')) {
+            extType = 'img'
+          } else if (/woff|woff2|eot|ttf|otf/i.test(extType ?? '')) {
+            extType = 'fonts'
+          }
+          return `assets/${extType}/[name]-[hash][extname]`
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        compact: true,
       },
     },
   },

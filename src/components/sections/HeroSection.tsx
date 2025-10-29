@@ -77,7 +77,7 @@ const HeroSection = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Globe Background */}
       <div
-        className="fixed inset-0 z-0 flex items-center justify-center globe-container"
+        className="fixed z-0 left-0 right-0 flex items-center justify-center globe-container"
         style={{
           opacity: planetOpacity,
           transition: 'opacity 0.3s ease-out'
@@ -253,37 +253,57 @@ const HeroSection = () => {
           animation: gradient 4s ease infinite;
         }
 
-        /* Globe positioning - responsive */
-        /* Desktop - centered with title */
+        /* Globe positioning - centered behind "STUDIO" text */
         .globe-container {
-          transform: translateY(-20vh);
+          top: 10% !important;
+          transform: translateY(-50%) !important;
         }
 
-        /* Large tablet */
-        @media (max-width: 1024px) {
+        /* Desktop - tačno iza STUDIO - DOBRO */
+        @media (min-width: 1280px) {
           .globe-container {
-            transform: translateY(-15vh);
+            top: 80px !important;
+            transform: none !important;
           }
         }
 
-        /* Tablet - centered with Nova Studio Solutions */
-        @media (max-width: 768px) {
+        /* Laptop - tačno iza STUDIO */
+        @media (min-width: 1024px) and (max-width: 1279px) {
           .globe-container {
-            transform: translateY(-12vh);
+            top: 70px !important;
+            transform: none !important;
           }
         }
 
-        /* Mobile - centered with title */
-        @media (max-width: 480px) {
+        /* Tablet - tačno iza STUDIO */
+        @media (min-width: 768px) and (max-width: 1023px) {
           .globe-container {
-            transform: translateY(-10vh);
+            top: 100px !important;
+            transform: none !important;
           }
         }
 
-        /* Small mobile */
-        @media (max-width: 375px) {
+        /* Large mobile (iPhone 12 Pro, iPhone 14, iPhone 15) - centrirano iza STUDIO */
+        @media (min-width: 390px) and (max-width: 767px) {
           .globe-container {
-            transform: translateY(-8vh);
+            top: 115px !important;
+            transform: none !important;
+          }
+        }
+
+        /* Medium mobile (iPhone SE, iPhone 8) - centrirano iza STUDIO */
+        @media (min-width: 375px) and (max-width: 389px) {
+          .globe-container {
+            top: 105px !important;
+            transform: none !important;
+          }
+        }
+
+        /* Small mobile - centrirano iza STUDIO */
+        @media (max-width: 374px) {
+          .globe-container {
+            top: 95px !important;
+            transform: none !important;
           }
         }
       `}</style>
