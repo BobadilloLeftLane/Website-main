@@ -76,9 +76,9 @@ const emailTemplate: EmailTemplate = {
 
 // Create nodemailer transporter
 const createTransporter = () => {
-  // PrivateEmail SMTP configuration
+  // Gmail SMTP configuration
   return nodemailer.createTransport({
-    host: 'mail.privateemail.com',
+    host: 'smtp.gmail.com',
     port: 587,
     secure: false, // Use STARTTLS
     auth: {
@@ -185,8 +185,8 @@ export const sendContactEmail = async (data: ContactEmailData): Promise<void> =>
   `
 
   const mailOptions = {
-    from: process.env.EMAIL_FROM || 'nova-solutions@novastudiosolutions.com',
-    to: process.env.EMAIL_TO || 'nova-solutions@novastudiosolutions.com',
+    from: process.env.EMAIL_FROM || 'dev.nssolutions@gmail.com',
+    to: process.env.EMAIL_TO || 'dev.nssolutions@gmail.com',
     subject: `🚀 Nova poruka: ${data.projectType} - ${data.name}`,
     html: htmlContent,
     text: `
@@ -280,7 +280,7 @@ export const sendAutoReply = async (data: AutoReplyData): Promise<void> => {
           </div>
 
           <p>${template.urgentContact}</p>
-          <p>📧 <strong>nova-solutions@novastudiosolutions.com</strong></p>
+          <p>📧 <strong>dev.nssolutions@gmail.com</strong></p>
         </div>
 
         <div class="footer">
@@ -294,7 +294,7 @@ export const sendAutoReply = async (data: AutoReplyData): Promise<void> => {
   `
 
   const mailOptions = {
-    from: process.env.EMAIL_FROM || 'nova-solutions@novastudiosolutions.com',
+    from: process.env.EMAIL_FROM || 'dev.nssolutions@gmail.com',
     to: data.email,
     subject: `🚀 ${template.subject}`,
     html: htmlContent,
@@ -314,7 +314,7 @@ export const sendAutoReply = async (data: AutoReplyData): Promise<void> => {
       📄 ${template.whatFollows.proposal}
 
       ${template.urgentContact}
-      📧 nova-solutions@novastudiosolutions.com
+      📧 dev.nssolutions@gmail.com
 
       ${template.footerCompany}
       ${template.footerLocation}

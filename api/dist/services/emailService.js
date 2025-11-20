@@ -63,7 +63,7 @@ const emailTemplate = {
 };
 const createTransporter = () => {
     return nodemailer.createTransport({
-        host: 'mail.privateemail.com',
+        host: 'smtp.gmail.com',
         port: 587,
         secure: false,
         auth: {
@@ -167,8 +167,8 @@ const sendContactEmail = async (data) => {
     </html>
   `;
     const mailOptions = {
-        from: process.env.EMAIL_FROM || 'nova-solutions@novastudiosolutions.com',
-        to: process.env.EMAIL_TO || 'nova-solutions@novastudiosolutions.com',
+        from: process.env.EMAIL_FROM || 'dev.nssolutions@gmail.com',
+        to: process.env.EMAIL_TO || 'dev.nssolutions@gmail.com',
         subject: `🚀 Nova poruka: ${data.projectType} - ${data.name}`,
         html: htmlContent,
         text: `
@@ -259,7 +259,7 @@ const sendAutoReply = async (data) => {
           </div>
 
           <p>${template.urgentContact}</p>
-          <p>📧 <strong>nova-solutions@novastudiosolutions.com</strong></p>
+          <p>📧 <strong>dev.nssolutions@gmail.com</strong></p>
         </div>
 
         <div class="footer">
@@ -272,7 +272,7 @@ const sendAutoReply = async (data) => {
     </html>
   `;
     const mailOptions = {
-        from: process.env.EMAIL_FROM || 'nova-solutions@novastudiosolutions.com',
+        from: process.env.EMAIL_FROM || 'dev.nssolutions@gmail.com',
         to: data.email,
         subject: `🚀 ${template.subject}`,
         html: htmlContent,
@@ -292,7 +292,7 @@ const sendAutoReply = async (data) => {
       📄 ${template.whatFollows.proposal}
 
       ${template.urgentContact}
-      📧 nova-solutions@novastudiosolutions.com
+      📧 dev.nssolutions@gmail.com
 
       ${template.footerCompany}
       ${template.footerLocation}
