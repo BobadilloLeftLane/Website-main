@@ -8,7 +8,8 @@ export const sr = {
     contact: "Kontakt"
   },
   hero: {
-    subtitle: "Naša misija je kreiranje naprednih tehnoloških rešenja koja osnažuju preduzeća svih veličina. Pristupačan razvoj prilagođenog softvera.",
+    seoTitle: "Izrada Web Sajta i Aplikacija u Novom Sadu",
+    subtitle: "Profesionalna izrada web sajta, mobilnih aplikacija i SaaS platformi. Moderne tehnologije, povoljne cene, brza isporuka. Vaš partner za digitalnu transformaciju u Novom Sadu.",
     stats: {
       founders: "Osnivača",
       experience: "Godina Iskustva",
@@ -18,20 +19,20 @@ export const sr = {
       locationLabel: "Srbija"
     },
     features: {
-      efficient: "Brzi i Efikasni",
-      affordable: "Povoljne Cene",
-      localSupport: "Lokalna Podrška",
-      modernSolutions: "Moderna Rešenja"
+      efficient: "Brza Izrada Web Sajta",
+      affordable: "Najpovoljnije Cene u NS",
+      localSupport: "Lokalna Podrška 24/7",
+      modernSolutions: "Moderne Tehnologije"
     },
     cta: {
-      primary: "Počnite Vaš Projekat",
+      primary: "Besplatna Konsultacija",
       secondary: "Kako Radimo"
     }
   },
   services: {
     badge: "Naše Usluge",
-    title: "End-to-End Tehnološka Rešenja",
-    subtitle: "Od ideje do globalne implementacije - kreiramo digitalne proizvode koji transformišu načine rada i života vaših korisnika",
+    title: "Profesionalna Izrada Web Sajta, Aplikacija i SaaS Platformi",
+    subtitle: "Od ideje do realizacije - kreiramo digitalne proizvode koji transformišu način poslovanja. Izrada web sajta, mobilnih i desktop aplikacija po najpovoljnijim cenama u Novom Sadu.",
     features: {
       scalableArchitecture: "Skalabilna Arhitektura",
       support247: "24/7 Podrška",
@@ -474,8 +475,12 @@ export const sr = {
     ctaButton: "Kontaktirajte Nas",
     items: [
       {
-        question: "Koliko košta izrada web aplikacije?",
-        answer: "Cena zavisi od složenosti projekta i specifičnih potreba vašeg biznisa. Uvek dajemo detaljnu ponudu nakon početne konsultacije. Nudimo transparentne cene bez skrivenih troškova i fleksibilne uslove plaćanja."
+        question: "Koliko košta izrada web sajta u Novom Sadu?",
+        answer: "Cene za izradu web sajta u Novom Sadu počinju od 500€ za jednostavne landing stranice. Profesionalni poslovni web sajt košta između 1.000€-3.000€, dok kompleksne web aplikacije i SaaS platforme kreću od 5.000€. Cena zavisi od funkcionalnosti, dizajna i složenosti projekta. Besplatna konsultacija i transparentna ponuda uvek!"
+      },
+      {
+        question: "Šta je uključeno u izradu web sajta?",
+        answer: "U izradu web sajta uključujemo: Profesionalan dizajn prilagođen vašem brendu, Responsive design (mobilna verzija), SEO optimizaciju za Google, Hosting i domen, SSL sertifikat (sigurnost), CMS za lako upravljanje sadržajem, Google Analytics integraciju, Kontakt forme, 30 dana besplatne podrške i obuke za korišćenje."
       },
       {
         question: "Koliko vremena traje izrada aplikacije?",
@@ -492,6 +497,10 @@ export const sr = {
       {
         question: "Možete li pomoći sa postojećim projektom?",
         answer: "Apsolutno! Možemo pomoći sa:\n\n• Bug fixes i poboljšanjima\n• Dodavanjem novih funkcija\n• Optimizacijom performansi\n• Refaktoringom i modernizacijom koda\n• Migracijom na nove tehnologije\n• Tehničkim konsaltingom\n\nPregledat ćemo vaš trenutni codebase i dati preporuke u roku od 2-3 dana."
+      },
+      {
+        question: "Koliko košta izrada mobilne aplikacije?",
+        answer: "Izrada mobilne aplikacije u Novom Sadu počinje od 3.000€ za jednostavne aplikacije. Srednje složene aplikacije koštaju 5.000€-15.000€, dok kompleksne aplikacije sa naprednim funkcijama počinju od 20.000€. Koristimo React Native tehnologiju što znači da jedna aplikacija radi i na iOS i Android platformama, što smanjuje troškove. Besplatna procena projekta!"
       },
       {
         question: "Da li radite sa startapima?",

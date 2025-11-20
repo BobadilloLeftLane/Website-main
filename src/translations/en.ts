@@ -8,7 +8,8 @@ export const en = {
     contact: "Contact"
   },
   hero: {
-    subtitle: "Our mission is to create cutting-edge technology solutions that empower businesses of all sizes. Affordable custom software development.",
+    seoTitle: "Web Development & Mobile Apps in Novi Sad",
+    subtitle: "Professional web development, mobile apps, and SaaS platforms. Modern technologies, affordable prices, fast delivery. Your digital transformation partner in Novi Sad, Serbia.",
     stats: {
       founders: "Founders",
       experience: "Years Experience",
@@ -18,13 +19,13 @@ export const en = {
       locationLabel: "Serbia"
     },
     features: {
-      efficient: "Fast and Efficient",
-      affordable: "Affordable Prices",
-      localSupport: "Local Support",
-      modernSolutions: "Modern Solutions"
+      efficient: "Fast Web Development",
+      affordable: "Best Prices in Novi Sad",
+      localSupport: "Local 24/7 Support",
+      modernSolutions: "Modern Technologies"
     },
     cta: {
-      primary: "Start Your Project",
+      primary: "Free Consultation",
       secondary: "How We Work"
     }
   },

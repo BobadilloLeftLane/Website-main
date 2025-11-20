@@ -95,7 +95,7 @@ const AboutSection = () => {
   return (
     <>
       <PageSEO
-        title="About Us | Software Development Team Novi Sad - O Nama"
+        title="Nova Studio Solutions"
         description="Expert software development team in Novi Sad, Serbia. Young, innovative, and affordable. 100% transparency, 24/7 support, 50% lower prices. Tim za razvoj softvera, mladi i inovativni."
         keywords="software development team, novi sad developers, serbia it company, software agency, development team, outsourcing serbia, o nama, nas tim, programeri novi sad, it kompanija srbija, softverska kuca, razvojna agencija"
         canonicalUrl="https://www.novastudiosolutions.com/#about"

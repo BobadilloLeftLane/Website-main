@@ -46,7 +46,7 @@ const FAQSection = () => {
   return (
     <>
       <PageSEO
-        title="FAQ | Frequently Asked Questions - Često Postavljana Pitanja"
+        title="Nova Studio Solutions"
         description="Common questions about software development: pricing, timelines, support, technologies. How much does a website cost? What technologies do you use? Koliko košta izrada web sajta? Pitanja i odgovori o razvoju softvera."
         keywords="software development faq, web development questions, pricing questions, koliko kosta web sajt, cena izrade aplikacije, software development cost, project timeline, technology stack, support options, pitanja i odgovori, cesto postavljana pitanja, software usluge, razvojna podrska"
         canonicalUrl="https://www.novastudiosolutions.com/#faq"

@@ -35,7 +35,7 @@ const ServicesSection = () => {
   return (
     <>
       <PageSEO
-        title="Software Development Services | SaaS, Web, Mobile Apps - Usluge Razvoja"
+        title="Nova Studio Solutions"
         description="Complete software development services: SaaS platforms, web applications, mobile apps, API integration, cloud solutions. Affordable prices, enterprise quality. Usluge razvoja softvera, izrada aplikacija i web sajta."
         keywords="saas development, web development services, mobile app development, api integration, cloud solutions, digital transformation, software services, usluge razvoja, izrada saas aplikacija, web usluge, mobilne aplikacije, cloud hosting, enterprise software"
         canonicalUrl="https://www.novastudiosolutions.com/#services"
@@ -63,10 +63,10 @@ const ServicesSection = () => {
           </motion.div>
 
           <h2 className="section-title">
-            {t?.services?.title || "End-to-End Technology Solutions"}
+            {t?.services?.title || "Profesionalna Izrada Web Sajta, Aplikacija i SaaS Platformi"}
           </h2>
           <p className="section-subtitle">
-            {t?.services?.subtitle || "From idea to global implementation - we create digital products that transform the ways your users work and live"}
+            {t?.services?.subtitle || "Od ideje do realizacije - kreiramo digitalne proizvode koji transformišu način poslovanja. Izrada web sajta, mobilnih i desktop aplikacija po najpovoljnijim cenama u Novom Sadu."}
           </p>
 
           {/* Feature highlights */}

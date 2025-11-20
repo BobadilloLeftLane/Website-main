@@ -51,7 +51,7 @@ const ProcessSection = () => {
   return (
     <>
       <PageSEO
-        title="Our Development Process | 8 Step Transparent Workflow - Naš Proces"
+        title="Nova Studio Solutions"
         description="Transparent 8-step development process: Free consultation, proposal, contract, development, launch, support. Fixed prices, clear timelines. Transparentan proces razvoja, od ideje do realizacije."
         keywords="software development process, agile development, mvp development, project management, development workflow, software lifecycle, proces razvoja, kako radimo, razvojni proces, projekat od pocetka, konsultacije, ponuda, ugovor, podrska"
         canonicalUrl="https://www.novastudiosolutions.com/#process"

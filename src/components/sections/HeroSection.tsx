@@ -69,7 +69,7 @@ const HeroSection = () => {
   return (
     <>
       <PageSEO
-        title="Software Development Agency Novi Sad | Izrada Web Sajta i Aplikacija"
+        title="Nova Studio Solutions"
         description="Nova Studio Solutions - Professional software development agency in Novi Sad, Serbia. SaaS platforms, web & mobile apps, MVP development. Affordable prices, fast delivery. Izrada web sajta i aplikacija po povoljnim cenama. Besplatna konsultacija."
         keywords="software development novi sad, web development serbia, izrada web sajta, izrada aplikacija, saas development, mvp development, mobilne aplikacije, web sajt cena, koliko kosta web sajt, izrada web stranica, programiranje novi sad, software agency serbia, affordable web development, startup development, digitalizacija, react development, node.js, cloud solutions, api integration, digital transformation"
         canonicalUrl="https://www.novastudiosolutions.com/"
@@ -130,6 +130,21 @@ const HeroSection = () => {
               SOLUTIONS
             </motion.span>
           </motion.h1>
+
+          {/* SEO-Optimized H2 Subtitle */}
+          <motion.h2
+            className="text-2xl md:text-3xl lg:text-4xl font-semibold text-theme-primary mt-8 mb-4 max-w-4xl mx-auto"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { delay: 0.8, duration: 0.8 }
+              }
+            }}
+          >
+            {t?.hero?.seoTitle || "Izrada Web Sajta i Aplikacija u Novom Sadu"}
+          </motion.h2>
 
         </motion.div>
 
