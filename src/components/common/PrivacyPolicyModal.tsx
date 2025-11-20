@@ -190,7 +190,7 @@ const PrivacyPolicyModal = ({ isOpen, onClose }: PrivacyPolicyModalProps) => {
                     please contact us:
                   </p>
                   <div className="space-y-2">
-                    <p><strong className="text-white">Email:</strong> nova-solutions@novastudiosolutions.com</p>
+                    <p><strong className="text-white">Email:</strong> dev.nssolutions@gmail.com</p>
                     <p><strong className="text-white">Company:</strong> Nova Studio Solutions</p>
                     <p><strong className="text-white">Location:</strong> Novi Sad, Serbia</p>
                   </div>

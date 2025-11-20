@@ -23,8 +23,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: t?.contact?.email?.label || "Email",
-      value: "nova-solutions@novastudiosolutions.com",
-      href: "mailto:nova-solutions@novastudiosolutions.com",
+      value: "dev.nssolutions@gmail.com",
+      href: "mailto:dev.nssolutions@gmail.com",
       description: t?.contact?.email?.description || "For all inquiries and collaboration"
     },
     {
