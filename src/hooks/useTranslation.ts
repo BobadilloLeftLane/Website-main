@@ -2,12 +2,12 @@ import { useState, useEffect, createContext, useContext } from 'react'
 // Import English as default (no lazy loading for default language)
 import { en } from '@/translations/en'
 
-export type Language = 'en' | 'sr'
+export type Language = 'en' | 'de'
 
 // Dynamic imports for translations (English is always loaded)
 const translationLoaders: Record<Language, () => Promise<{ [key: string]: any }>> = {
   en: async () => ({ en }), // Already loaded, return immediately
-  sr: () => import('@/translations/sr').then(m => m)
+  de: () => import('@/translations/de').then(m => m)
 }
 
 export type TranslationKey = keyof typeof en
@@ -70,11 +70,11 @@ export const useTranslationProvider = () => {
       // First visit - auto-detect browser language
       const browserLang = navigator.language.toLowerCase()
 
-      // Map browser language codes to supported languages (English or Serbian only)
+      // Map browser language codes to supported languages (English or German only)
       let detectedLang: Language = 'en' // Default to English
 
-      if (browserLang.startsWith('sr')) {
-        detectedLang = 'sr' // Serbian
+      if (browserLang.startsWith('de')) {
+        detectedLang = 'de' // German
       }
       // All other languages default to English
 

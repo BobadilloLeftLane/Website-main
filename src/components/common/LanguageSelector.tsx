@@ -4,11 +4,11 @@ import { ChevronDown } from 'lucide-react'
 import { useTranslation, type Language } from '@/hooks/useTranslation'
 
 // Flag SVG Components
-const FlagRS = () => (
+const FlagDE = () => (
   <svg width="20" height="15" viewBox="0 0 20 15" fill="none">
-    <rect width="20" height="5" fill="#C8102E"/>
-    <rect y="5" width="20" height="5" fill="#003893"/>
-    <rect y="10" width="20" height="5" fill="#FFFFFF"/>
+    <rect width="20" height="5" fill="#000000"/>
+    <rect y="5" width="20" height="5" fill="#DD0000"/>
+    <rect y="10" width="20" height="5" fill="#FFCE00"/>
   </svg>
 )
 
@@ -32,7 +32,7 @@ interface LanguageOption {
 
 const languages: LanguageOption[] = [
   { code: 'en', name: 'English', flag: FlagGB },
-  { code: 'sr', name: 'Srpski', flag: FlagRS }
+  { code: 'de', name: 'Deutsch', flag: FlagDE }
 ]
 
 const LanguageSelector = () => {

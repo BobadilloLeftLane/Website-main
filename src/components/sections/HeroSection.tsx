@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useCallback } from 'react'
-import { ArrowRight, Star, Zap, Users } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import AnimatedButton from '@/components/common/AnimatedButton'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useThrottledScroll } from '@/utils/useThrottledScroll'
@@ -28,43 +28,6 @@ const HeroSection = () => {
       transition: { duration: 1.2, ease: "easeOut", staggerChildren: 0.2 }
     }
   }
-
-  const statsVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: (i: number) => ({
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delay: 0.8 + i * 0.1,
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    })
-  }
-
-  const floatingVariants = {
-    float: {
-      y: [0, -20, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  }
-
-  const stats = [
-    { number: "2", label: t?.hero?.stats?.founders || "Founders", icon: Users, suffix: "" },
-    { number: "20+", label: t?.hero?.stats?.experience || "Years Experience", icon: Star, suffix: "" },
-    { number: t?.hero?.stats?.fastNumber || "Fast", label: t?.hero?.stats?.fastLabel || "Development", icon: Zap, suffix: "" }
-  ]
-
-  const features = [
-    t?.hero?.features?.efficient || "Fast and Efficient",
-    t?.hero?.features?.affordable || "Affordable Prices",
-    t?.hero?.features?.localSupport || "Local Support",
-    t?.hero?.features?.modernSolutions || "Modern Solutions"
-  ]
 
   return (
     <>
@@ -151,49 +114,6 @@ const HeroSection = () => {
         {/* Spacer */}
         <div className="my-40 md:my-52"></div>
 
-        {/* Subtitle */}
-        <motion.p
-          className="text-xl md:text-2xl text-theme-secondary mb-8 max-w-3xl mx-auto leading-relaxed"
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { delay: 0.9, duration: 0.8 }
-            }
-          }}
-        >
-{t?.hero?.subtitle || "Creating the digital future through innovative solutions and avant-garde approach to software development"}
-        </motion.p>
-
-        {/* Features List */}
-        <motion.div
-          className="mb-10"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { delay: 1.1, duration: 0.6 }
-            }
-          }}
-        >
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="px-4 py-2 glass-morphism rounded-full border border-electric-blue/30"
-                style={{ backgroundColor: 'var(--bg-glass)' }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.3 + index * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.05, borderColor: 'var(--electric-blue)' }}
-              >
-                <span className="text-sm font-medium text-theme-primary">{feature}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* CTA Buttons */}
         <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
@@ -215,43 +135,6 @@ const HeroSection = () => {
             <span>{t?.hero?.cta?.primary || "Start Your Project"}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </AnimatedButton>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-3xl mx-auto"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { delay: 1.7, duration: 0.6, staggerChildren: 0.1 }
-            }
-          }}
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="text-center group"
-              variants={statsVariants}
-              custom={index}
-              whileHover={{ scale: 1.05 }}
-            >
-              <motion.div
-                className="w-16 h-16 mx-auto mb-3 glass-morphism rounded-lg flex items-center justify-center border border-electric-blue/30 group-hover:border-electric-blue/60 transition-colors"
-                style={{ backgroundColor: 'var(--bg-glass)' }}
-                variants={floatingVariants}
-                animate="float"
-              >
-                <stat.icon className="w-8 h-8 text-electric-blue" />
-              </motion.div>
-              <div className="text-3xl font-bold font-space text-theme-primary mb-1">
-                {stat.number}{stat.suffix}
-              </div>
-              <div className="text-sm text-theme-secondary">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
         </motion.div>
 
       </motion.div>
